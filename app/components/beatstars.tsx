@@ -10,8 +10,9 @@ type statsType = {
     following: number
 };
 
-const Stats = () => {
+const Beatstars = () => {
     const [stats, setStats] = useState<statsType>();
+    const [tracklistIds, setTracklistIds] = useState<string>();
     const [error, setError] = useState<string>();
 
     useEffect(() => {
@@ -32,19 +33,38 @@ const Stats = () => {
                 console.error('Error fetching stats:', error);
                 setError('Error fetching stats');
             });
+/*        fetch('https://core.prod.beatstars.net/graphql?op=getProfileContentTrackList')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch tracklist');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                if (!data || !data.response || !Array.isArray(data.response.data.content)) {
+                    throw new Error('Failed to fetch tracklist');
+                }
+                setTracklistIds(data.response.data.content);
+            })
+            .catch((error) => {
+                console.error('Error fetching tracklist:', error);
+                setError('Error fetching tracklist');
+            });*/
     }, []);
 
     return (<>
         {error ? (
             <span>{error}</span>
         ) : stats ? (
-            <p>
+            <p className='flex flex-col'>
                 <span>Beatstars Stats:</span>
                 <span>Followers: {stats.followers}</span>
                 <span>Plays: {stats.plays}</span>
+
+                <span>Tracks: {tracklistIds}</span>
             </p>
         ) : null}
     </>);
 };
 
-export default Stats;
+export default Beatstars;
