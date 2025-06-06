@@ -52,7 +52,7 @@ const Beatstars = () => {
             variables: {
                 memberId: 'MR141266',
                 page: 0,
-                size: 12,
+                size: 5,
             }};
 
         fetch('https://core.prod.beatstars.net/graphql?op=getProfileContentTrackList', {
@@ -96,7 +96,7 @@ const Beatstars = () => {
             tracklistIds.map(track => {
                 return (
                     <iframe key={track.v2Id}
-                            src={`//www.beatstars.com/embed/track/?id=${track.v2Id}`}
+                            src={`https://beatstars.com/embed/track/?id=${track.v2Id}`}
                             width='100%' height='140'
                             style={{border: 'none'}}></iframe>
                 );
