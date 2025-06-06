@@ -6,7 +6,6 @@ type trackData = { alias: string };
 
 const Airbit = () => {
     const [tracklistIds, setTracklistIds] = useState<Array<string>>();
-
     useEffect(() => {
 
         const trackListQuery = `
@@ -63,7 +62,6 @@ const Airbit = () => {
             })
             .catch((error) => {
                 console.error('Error fetching tracklist:', error);
-                setError('Error fetching tracklist');
             });
     }, []);
 
