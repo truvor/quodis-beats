@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type {Metadata} from 'next';
+import {Geist, Geist_Mono} from 'next/font/google';
+import Link from 'next/link';
+import './globals.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,11 +25,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+    >
+    <nav>
+      <ul>
+        <li>
+          <Link href="/"> <span>Beatstars</span></Link>
+        </li>
+        <li>
+          <Link href="/airbit"><span>Airbit</span></Link>
+        </li>
+      </ul>
+    </nav>
+    <main className='ps-80 pe-80'>
+      <>{children}</>
+    </main>
+    <footer className='flex justify-center'>
+      <span>Developed by&nbsp;</span>
+      <a className='underline underline-offset-4'
+         href='mailto:info@risky4real.com'>Risky4real</a>
+    </footer>
+    </body>
     </html>
   );
 }
