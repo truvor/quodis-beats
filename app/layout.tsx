@@ -34,6 +34,9 @@ export default function RootLayout({
           <Link href="/"> <span>Beatstars</span></Link>
         </li>
         <li>
+          <Link href="/spotify"> <span>Spotify</span></Link>
+        </li>
+        <li>
           <Link href="/airbit"><span>Airbit</span></Link>
         </li>
       </ul>
