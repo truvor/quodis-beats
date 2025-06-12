@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import Link from 'next/link';
 import './globals.css';
+import Analytics from '@/app/components/analytics';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({
       <a className='underline underline-offset-4'
          href='mailto:info@risky4real.com'>Risky4real</a>
     </footer>
+    <Analytics/>
     </body>
     </html>
   );
