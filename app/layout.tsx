@@ -43,7 +43,7 @@ export default function RootLayout({
       </ul>
     </nav>
     <main className='ps-80 pe-80'>
-      <>{children}</>
+      {children}
     </main>
     <footer className='flex justify-center'>
       <span>Developed by&nbsp;</span>
