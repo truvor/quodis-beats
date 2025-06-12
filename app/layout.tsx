@@ -40,6 +40,9 @@ export default function RootLayout({
         <li>
           <Link href="/airbit"><span>Airbit</span></Link>
         </li>
+        <li>
+          <Link href="/more"><span>More</span></Link>
+        </li>
       </ul>
     </nav>
     <main className='ps-80 pe-80'>
@@ -48,7 +51,7 @@ export default function RootLayout({
     <footer className='flex justify-center'>
       <span>Developed by&nbsp;</span>
       <a className='underline underline-offset-4'
-         href='mailto:info@risky4real.com'>Risky4real</a>
+         href='https://risky4real.com'>Risky4real</a>
     </footer>
     <Analytics/>
     </body>
