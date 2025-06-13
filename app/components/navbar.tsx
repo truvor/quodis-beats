@@ -1,11 +1,10 @@
-// ts-nocheck
 'use client';
 
 import {useRef} from 'react';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const contentRef = useRef(null);
+  const contentRef = useRef<HTMLUListElement | null>(null);
 
   const handleClick = () => {
     if (contentRef.current) {
