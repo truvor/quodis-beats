@@ -12,7 +12,7 @@ type statsType = {
 
 type trackData = { v2Id: string };
 
-const Beatstars = () => {
+const Page = () => {
     const [stats, setStats] = useState<statsType>();
     const [tracklistIds, setTracklistIds] = useState<Array<trackData>>();
     const [error, setError] = useState<string>();
@@ -105,4 +105,4 @@ const Beatstars = () => {
     </>);
 };
 
-export default Beatstars;
+export default Page;

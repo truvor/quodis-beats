@@ -1,7 +1,7 @@
-import Beatstars from '@/app/components/beatstars';
+import Spotify from '@/app/components/spotify';
 
 export default function Home() {
     return (
-      <Beatstars></Beatstars>
+      <Spotify></Spotify>
     );
 }

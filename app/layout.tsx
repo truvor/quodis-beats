@@ -1,9 +1,8 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
-import Link from 'next/link';
 import './globals.css';
 import Analytics from '@/app/components/analytics';
-
+import Navbar from '@/app/components/navbar';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,26 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en'>
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-    <nav>
-      <ul>
-        <li>
-          <Link href="/"> <span>Beatstars</span></Link>
-        </li>
-        <li>
-          <Link href="/spotify"> <span>Spotify</span></Link>
-        </li>
-        <li>
-          <Link href="/airbit"><span>Airbit</span></Link>
-        </li>
-        <li>
-          <Link href="/more"><span>More</span></Link>
-        </li>
-      </ul>
-    </nav>
+    <Navbar/>
     <main className='ps-80 pe-80'>
       {children}
     </main>
