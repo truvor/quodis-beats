@@ -1,35 +1,68 @@
 'use client';
 
-import {useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const contentRef = useRef<HTMLUListElement | null>(null);
+  const dropdownRef = useRef<HTMLUListElement | null>(null);
+  const menuRef = useRef<HTMLUListElement | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
-  const handleClick = () => {
-    if (contentRef.current) {
-      contentRef.current.style.display =
-        contentRef.current.style.display === 'none' ? 'block' : 'none';
-    }
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(prev => !prev);
   };
 
+  const handleBurgerToggle = () => {
+    setIsBurgerOpen(prev => !prev);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as HTMLElement;
+
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        setIsDropdownOpen(false);
+      }
+
+      if (menuRef.current && !menuRef.current.contains(target)) {
+        setIsBurgerOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <section className="navigation">
-      <div className="nav-container">
-        <div className="brand">
-          <a href="#!">Quodis Beats</a>
+    <section className='navigation'>
+      <div className='nav-container'>
+        <div className='brand'>
+          <Link href='/'>Quodis Beats</Link>
         </div>
-        <nav>
-          <div className="nav-mobile">
-            <a id="nav-toggle" href="#!"><span></span></a>
+        <nav ref={menuRef}>
+          <div className='nav-mobile'>
+            <button onClick={handleBurgerToggle}
+                    id='nav-toggle'
+                    className={`${isBurgerOpen ? 'active' : ''}`}>
+              <span></span>
+            </button>
           </div>
-          <ul className="nav-list">
+          <ul className={`nav-list ${isBurgerOpen ? 'open' : ''}`}>
             <li><Link href='/'><span>Spotify</span></Link></li>
-            <li><Link onClick={handleClick} href=''><span>Buy</span></Link>
-              <ul ref={contentRef} className="nav-dropdown hidden">
-                <li><Link href='/beatstars'><span>Beatstars</span></Link></li>
-                <li><Link href='/airbit'><span>Airbit</span></Link></li>
-              </ul>
+            <li><Link onClick={handleDropdownToggle} href=''><span
+              className='dropdown-selector'>Buy</span></Link>
+              {isDropdownOpen && (
+                <ul ref={dropdownRef} className='nav-dropdown'>
+                  <li><Link href='/beatstars'><span>Beatstars</span></Link></li>
+                  <li><Link href='/airbit'><span>Airbit</span></Link></li>
+                </ul>
+              )}
             </li>
             <li><Link href='/more'><span>More</span></Link></li>
           </ul>
