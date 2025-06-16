@@ -32,11 +32,18 @@ export default function RootLayout({
     <main className='ps-80 pe-80'>
       {children}
     </main>
-    <footer className='flex justify-center'>
-      <span>Developed by&nbsp;</span>
-      <a className='underline underline-offset-4'
-         href='https://risky4real.com'>Risky4real</a>
+
+    <footer className='bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800'>
+      <div
+        className='w-full mx-auto max-w-screen-xl p-4 flex justify-center'>
+      <span
+        className='text-base text-gray-500 sm:text-center dark:text-gray-400'>Developed by <a
+        href='https://risky4real.com'
+        className='underline underline-offset-4'>Risky4real</a>
+      </span>
+      </div>
     </footer>
+
     <Analytics/>
     </body>
     </html>
