@@ -25,11 +25,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/*
-$content-width will be the max width of the content within the navigation bar.
-$breakpoint determines at which width the media query breakpoint will take effect.
-*/
-
 body {
   background-color: #63D6E0;
 }
@@ -52,9 +47,6 @@ nav ul li a {
   background: #ffffff;
   color: #463f3f;
   text-decoration: none;
-  /*
-  The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
-  */
 }
 nav ul li a:hover {
   background: #f2f2f2;
@@ -65,6 +57,8 @@ nav ul li a:hover {
   padding-left: 4px;
   content: ' ▾';
 }
+
+/* Dropdown items */
 nav ul li ul li {
   min-width: 190px;
 }
@@ -74,10 +68,15 @@ nav ul li ul li a {
 }
 
 .nav-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
   position: absolute;
   z-index: 1;
-  /* Guarantees that the dropdown will display on top of any content. */
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+.nav-dropdown.open {
+  max-height: 500px;
 }
 
 .nav-mobile {
@@ -85,7 +84,6 @@ nav ul li ul li a {
   position: absolute;
   top: 0;
   right: 0;
-  background: #fff;
   height: 70px;
   width: 70px;
 }
@@ -101,11 +99,29 @@ nav ul li ul li a {
   }
 
   .nav-list {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
   }
 
   .nav-list.open {
-    display: block;
+    max-height: 300px; /* Adjust based on your content's maximum possible height */
+  }
+
+  .nav-list.visible {
+    overflow: visible;
+  }
+
+  @media screen and (min-width: 800px) {
+    .nav-list {
+      max-height: none;
+      overflow: visible;
+      position: static;
+      box-shadow: none;
+    }
   }
 
   nav ul li {
@@ -158,11 +174,6 @@ nav ul li ul li a {
   transform: rotate(-45deg);
 }
 
-@media screen and (min-width: 800px) {
-  .nav-list {
-    display: block !important;
-  }
-}
 /*
 .navigation – the outer wrapper for the navbar. Specifies the height and color, and will stretch the full width of the viewport.
 */

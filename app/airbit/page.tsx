@@ -72,8 +72,6 @@ const Airbit = () => {
                     <iframe key={id} src={`https://solo.airbit.com/beat/quodisbeats/${id}`} width="100%" height="215px"></iframe>
                 );
             })
-
-
         ) : null}
     </>);
 };

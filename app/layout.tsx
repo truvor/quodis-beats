@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 import Analytics from '@/app/components/analytics';
-import Navbar from '@/app/components/navbar';
+import Navbar from '@/app/components/navbar/navbar';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,7 +29,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
     <Navbar/>
-    <main className='ps-80 pe-80'>
+    <main className='mx-auto p-4 pb-0 md:w-2/3 lg:w-1/2 xl:w-1/3'>
       {children}
     </main>
 
