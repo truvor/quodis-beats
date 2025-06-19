@@ -6,7 +6,6 @@ import Link from 'next/link';
 export default function Navbar() {
   const dropdownRef = useRef<HTMLUListElement | null>(null);
   const menuRef = useRef<HTMLUListElement | null>(null);
-  const burgerContentRef = useRef<HTMLUListElement | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
@@ -54,8 +53,7 @@ export default function Navbar() {
               <span></span>
             </button>
           </div>
-          <ul ref={burgerContentRef}
-              className={`nav-list ${isBurgerOpen ? 'open' : ''}
+          <ul className={`nav-list ${isBurgerOpen ? 'open' : ''}
               ${isDropdownOpen ? 'visible' : ''}`}>
             <li><Link href='/'><span>Spotify</span></Link></li>
             <li><Link onClick={handleDropdownToggle} href=''><span

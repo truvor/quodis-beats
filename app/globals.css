@@ -115,15 +115,6 @@ nav ul li ul li a {
     overflow: visible;
   }
 
-  @media screen and (min-width: 800px) {
-    .nav-list {
-      max-height: none;
-      overflow: visible;
-      position: static;
-      box-shadow: none;
-    }
-  }
-
   nav ul li {
     float: none;
   }
