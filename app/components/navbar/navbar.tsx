@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
 
 export default function Navbar() {
@@ -9,7 +9,8 @@ export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
-  const handleDropdownToggle = () => {
+  const handleDropdownToggle: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
     setIsDropdownOpen(prev => !prev);
   };
 

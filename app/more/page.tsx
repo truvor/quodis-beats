@@ -38,7 +38,7 @@ export default function More() {
   }, []);
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen'>
+    <div className='flex flex-col items-center justify-center'>
       <> {(searchResult.length > 0) ? (
         searchResult.map((result, index) => (
         <div key={index}>
