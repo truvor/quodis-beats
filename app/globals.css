@@ -26,7 +26,7 @@ body {
 }
 
 body {
-  background-color: #63D6E0;
+  background-color: #E1DCD7;
 }
 
 main {
@@ -198,4 +198,9 @@ nav ul li ul li a {
 .brand a:visited {
   color: #463f3f;
   text-decoration: none;
+}
+
+.marketplace-widget {
+  border-radius: .75rem;
+  overflow: hidden;
 }

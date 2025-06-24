@@ -65,7 +65,6 @@ export default function Navbar() {
                 <li><Link href='/airbit'><span>Airbit</span></Link></li>
               </ul>
             </li>
-            <li><Link href='/more'><span>More</span></Link></li>
           </ul>
         </nav>
       </div>

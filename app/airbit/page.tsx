@@ -38,7 +38,7 @@ const Airbit = () => {
             operationName: 'SearchBeatsByUser',
             query: trackListQuery,
             variables: {
-                first: 5,
+                first: 3,
                 page: 1,
                 search: '',
                 userId: '98319'
@@ -69,7 +69,7 @@ const Airbit = () => {
         {tracklistIds ? (
             tracklistIds.map((id) => {
                 return (
-                    <iframe key={id} src={`https://solo.airbit.com/beat/quodisbeats/${id}`} width="100%" height="215px"></iframe>
+                    <iframe key={id} src={`https://solo.airbit.com/beat/quodisbeats/${id}`} width='100%' height='215px'></iframe>
                 );
             })
         ) : null}
