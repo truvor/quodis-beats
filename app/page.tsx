@@ -1,4 +1,4 @@
-import Spotify from '@/app/components/spotify';
+import Spotify from '@/app/components/spotify/spotify';
 
 export default function Home() {
     return (
