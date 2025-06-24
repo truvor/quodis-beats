@@ -18,6 +18,11 @@ export default function Navbar() {
     setIsBurgerOpen(prev => !prev);
   };
 
+  const handleLinkClick = () => {
+    setIsBurgerOpen(false);
+    setIsDropdownOpen(false);
+  }
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       const target = event.target as HTMLElement;
@@ -56,13 +61,13 @@ export default function Navbar() {
           </div>
           <ul className={`nav-list ${isBurgerOpen ? 'open' : ''}
               ${isDropdownOpen ? 'visible' : ''}`}>
-            <li><Link href='/'><span>Spotify</span></Link></li>
+            <li><Link onClick={handleLinkClick} href='/'><span>Spotify</span></Link></li>
             <li ref={dropdownRef}><Link onClick={handleDropdownToggle}
                                         href=''><span
               className='dropdown-selector'>Buy</span></Link>
               <ul className={`nav-dropdown ${isDropdownOpen ? 'open' : ''}`}>
-                <li><Link href='/beatstars'><span>Beatstars</span></Link></li>
-                <li><Link href='/airbit'><span>Airbit</span></Link></li>
+                <li><Link onClick={handleLinkClick} href='/beatstars'><span>Beatstars</span></Link></li>
+                <li><Link onClick={handleLinkClick} href='/airbit'><span>Airbit</span></Link></li>
               </ul>
             </li>
           </ul>
