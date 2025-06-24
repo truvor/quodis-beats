@@ -113,7 +113,7 @@ nav ul li ul li a {
   }
 
   .nav-list.open {
-    max-height: 300px; /* Adjust based on your content's maximum possible height */
+    max-height: 300px;
   }
 
   .nav-list.visible {
