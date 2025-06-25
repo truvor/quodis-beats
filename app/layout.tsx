@@ -35,7 +35,7 @@ export default function RootLayout({
       {children}
     </main>
 
-    <footer className='mt-8 bg-white shadow-sm dark:bg-gray-800 flex-shrink-0'>
+    <footer className='mt-6 bg-white shadow-sm dark:bg-gray-800 flex-shrink-0'>
       <div
         className='w-full mx-auto max-w-screen-xl p-4 flex justify-center'>
       <span
