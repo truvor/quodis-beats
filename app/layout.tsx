@@ -29,11 +29,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
     <Navbar/>
-    <main className='mx-auto p-4 pb-0 md:w-2/3 lg:w-1/2 xl:w-1/3'>
+    <main className='mx-auto p-4 md:w-2/3 lg:w-1/2 xl:w-1/3'>
       {children}
     </main>
 
-    <footer className='bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800'>
+    <footer className='mt-8 bg-white shadow-sm dark:bg-gray-800 flex-shrink-0'>
       <div
         className='w-full mx-auto max-w-screen-xl p-4 flex justify-center'>
       <span
