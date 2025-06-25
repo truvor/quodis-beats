@@ -38,20 +38,34 @@ export default function More() {
   }, []);
 
   return (
-    <div className='flex flex-col items-center justify-center'>
-      <> {(searchResult.length > 0) ? (
-        searchResult.map((result, index) => (
-        <div key={index}>
-          <h3>{result.title}</h3>
-          <p dangerouslySetInnerHTML={{ __html: result.description}} />
+    <div className="flex flex-col items-center justify-center max-w-2xl mx-auto">
+      {searchResult.length > 0 ? (
+        <div className="w-full bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="space-y-6">
+            {searchResult.map((result, index) => (
+              <div key={index} className="group pb-6 border-b border-gray-100 last:border-b-0 last:pb-0">
+                <a href={result.url} target="_blank" rel="noopener noreferrer" className="block hover:no-underline">
+                  <h2 className="text-xl font-medium text-blue-700 hover:text-blue-900 hover:underline mb-2 group-hover:underline">
+                    {result.title}
+                  </h2>
+
+                  <span className="text-sm text-green-600 mb-2 truncate font-medium">{result.url}</span>
+
+                  <p
+                    className="text-gray-800 text-sm leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: result.description }}
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
-        ))) : (
-          <>
-            <h1 className='text-4xl font-bold mb-4'>More Coming Soon!</h1>
-            <p className='text-lg'>Stay tuned for more content from Quodis.</p>
-          </>
-        )
-      }</>
+      ) : (
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">More Coming Soon!</h1>
+          <p className="text-lg">Stay tuned for more content from Quodis.</p>
+        </div>
+      )}
     </div>
   );
 }
