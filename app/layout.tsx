@@ -3,6 +3,7 @@ import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 import Analytics from '@/app/components/analytics';
 import Navbar from '@/app/components/navbar/navbar';
+import Media from "@/app/components/media/media";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Quodis Beats',
-  description: 'The website of Quodis, a music producer',
+  description: 'The website of Quodis Beats, a music producer: R&B, Hip-Hop, Trap, Lo-Fi',
 };
 
 export default function RootLayout({
@@ -29,6 +30,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
     <Navbar/>
+    <Media/>
     <main className='mx-auto p-4 md:w-2/3 lg:w-1/2 xl:w-1/3'>
       {children}
     </main>

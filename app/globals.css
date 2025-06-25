@@ -30,7 +30,7 @@ body {
 }
 
 main {
-  min-height: calc(100vh - 70px - 5.5rem);
+  min-height: calc(100vh - 70px - 9.5rem);
 }
 
 nav {
