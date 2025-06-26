@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Quodis Beats',
-  description: 'The website of Quodis Beats, a music producer: R&B, Hip-Hop, Trap, Lo-Fi',
+  description: 'Listen to and buy original R&B, Hip-Hop, Trap, and Lo-Fi beats by Quodis Beats. Available for streaming on all major platforms and for purchase with instant download.',
 };
 
 export default function RootLayout({

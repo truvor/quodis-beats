@@ -2,10 +2,10 @@
 
 import {useState, useEffect} from 'react';
 
-type trackData = { alias: string };
+type trackData = { alias: string, name: string };
 
 const Airbit = () => {
-    const [tracklistIds, setTracklistIds] = useState<Array<string>>();
+    const [tracklistData, setTracklistData] = useState<Array<trackData>>();
     useEffect(() => {
 
         const trackListQuery = `
@@ -19,12 +19,8 @@ const Airbit = () => {
   ) {
     data {
       ... on Beat {
-        id
         name
         alias
-        duration
-        playCount
-        marketplaceUrl
       }
     }
     paginatorInfo {
@@ -58,7 +54,10 @@ const Airbit = () => {
                 return response.json();
             })
             .then((responseData) => {
-                setTracklistIds(responseData.data.searchBeatsByUser.data.map((item: trackData) => item.alias));
+                setTracklistData(responseData.data.searchBeatsByUser.data.map((item: trackData) => ({
+                    alias: item.alias,
+                    name: item.name
+                })));
             })
             .catch((error) => {
                 console.error('Error fetching tracklist:', error);
@@ -66,10 +65,15 @@ const Airbit = () => {
     }, []);
 
     return (<>
-        {tracklistIds ? (
-            tracklistIds.map((id) => {
+        {tracklistData ? (
+            tracklistData.map(trackData => {
                 return (
-                    <iframe key={id} src={`https://solo.airbit.com/beat/quodisbeats/${id}`} width='100%' height='215px'></iframe>
+                    <iframe key={trackData.alias}
+                            src={`https://solo.airbit.com/beat/quodisbeats/${trackData.alias}`}
+                            width='100%'
+                            height='215px'
+                            title={trackData.name}
+                    ></iframe>
                 );
             })
         ) : null}

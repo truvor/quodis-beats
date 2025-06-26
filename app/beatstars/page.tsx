@@ -2,10 +2,10 @@
 
 import {useState, useEffect} from 'react';
 
-type trackData = { v2Id: string };
+type trackData = { v2Id: string, title: string };
 
 const Page = () => {
-    const [tracklistIds, setTracklistIds] = useState<Array<trackData>>();
+    const [tracklistData, setTracklistData] = useState<Array<trackData>>();
     const [error, setError] = useState<string>();
 
     useEffect(() => {
@@ -14,6 +14,7 @@ const Page = () => {
     profileTracks(memberId: $memberId, page: $page, size: $size) {
       content {
         v2Id
+        title
       }
     }
   }
@@ -46,7 +47,7 @@ const Page = () => {
                     throw new Error('Failed to fetch tracklist');
                 }
 
-                setTracklistIds(data.data.profileTracks.content);
+                setTracklistData(data.data.profileTracks.content);
             })
             .catch(error => {
                 console.error('Error fetching tracklist:', error);
@@ -60,13 +61,14 @@ const Page = () => {
         ) : null}
 
         <div className='marketplace-widget'>
-            {tracklistIds ? (
-              tracklistIds.map(track => {
+            {tracklistData ? (
+              tracklistData.map(track => {
                   return (
                     <iframe key={track.v2Id}
                             src={`https://beatstars.com/embed/track/?id=${track.v2Id}`}
                             width='100%' height='140'
-                            style={{border: 'none'}}></iframe>
+                            style={{border: 'none'}}
+                            title={track.title}></iframe>
                   );
               })
             ) : null}
