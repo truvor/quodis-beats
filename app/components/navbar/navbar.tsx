@@ -55,7 +55,8 @@ export default function Navbar() {
           <div className='nav-mobile'>
             <button onClick={handleBurgerToggle}
                     id='nav-toggle'
-                    className={`${isBurgerOpen ? 'active' : ''}`}>
+                    className={`${isBurgerOpen ? 'active' : ''}`}
+                    aria-label="burger toggle">
               <span></span>
             </button>
           </div>
