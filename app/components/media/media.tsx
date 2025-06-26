@@ -12,7 +12,7 @@ export default function Media() {
             <Image width={20}
                    height={20}
                    src='/secret_place_20x20.png'
-                   alt='Beattape - My Secret Place (2025)'
+                   alt='My Secret Place (2025)'
             className='mr-2'/>
             Beattape - My Secret Place (2025)
           </Link>

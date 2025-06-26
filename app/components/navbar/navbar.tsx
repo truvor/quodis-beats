@@ -70,7 +70,7 @@ export default function Navbar() {
                 <li><Link onClick={handleLinkClick} href='/airbit'><span>Airbit</span></Link></li>
               </ul>
             </li>
-            <li><Link onClick={handleLinkClick} href='/more'><span>Learn More</span></Link></li>
+            <li><Link onClick={handleLinkClick} href='/more-info'><span>More Info</span></Link></li>
           </ul>
         </nav>
       </div>
