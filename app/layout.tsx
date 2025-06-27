@@ -31,7 +31,7 @@ export default function RootLayout({
     >
     <Navbar/>
     <Media/>
-    <main className='mx-auto p-4 md:w-2/3 lg:w-1/2 xl:w-1/3'>
+    <main>
       {children}
     </main>
 

@@ -38,7 +38,7 @@ export default function More() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center max-w-2xl mx-auto">
+    <div className="mt-4 flex flex-col items-center justify-center max-w-2xl mx-auto">
       {searchResult.length > 0 ? (
         <div className="w-full bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="space-y-6">

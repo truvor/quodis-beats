@@ -11,7 +11,7 @@ export default function Media() {
           <Link href="https://ffm.to/quodismysecretplace" className={styles.releaseLink}>
             <Image width={20}
                    height={20}
-                   src='/secret_place_20x20.png'
+                   src='/secret_place_20x20_circle.png'
                    alt='My Secret Place (2025)'
             className='mr-2'/>
             Beattape - My Secret Place (2025)

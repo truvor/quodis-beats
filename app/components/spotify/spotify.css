@@ -1,3 +1,14 @@
 .widget {
-  height: max(calc(100vh - 70px - 11.5rem), 500px);
+  height: max(calc(100vh - 70px - 19.5rem), 500px);
+}
+
+.summary {
+  max-width: calc(1000px - 2rem);
+  margin: .75rem auto 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .summary {
+    margin: 1rem 1rem 0 1rem;
+  }
 }

@@ -60,7 +60,7 @@ const Page = () => {
           <span>{error}</span>
         ) : null}
 
-        <div className='marketplace-widget'>
+        <div className='marketplace-widget md:w-2/3 lg:w-1/2 xl:w-1/3'>
             {tracklistData ? (
               tracklistData.map(track => {
                   return (
