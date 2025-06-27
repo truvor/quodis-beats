@@ -14,7 +14,7 @@ export default function Media() {
                    src='/secret_place_20x20_circle.png'
                    alt='My Secret Place (2025)'
             className='mr-2'/>
-            Beattape - My Secret Place (2025)
+            My Secret Place • EP • 2025
           </Link>
         </div>
         <div className={styles.socialIcons}>

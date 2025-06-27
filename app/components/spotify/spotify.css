@@ -5,6 +5,15 @@
 .summary {
   max-width: calc(1000px - 2rem);
   margin: .75rem auto 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  max-height: 0;
+}
+
+.summary.open {
+  opacity: 1;
+  max-height: 500px;
 }
 
 @media only screen and (max-width: 800px) {

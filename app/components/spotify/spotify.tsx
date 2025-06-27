@@ -8,10 +8,7 @@ export default function Spotify() {
 
   useEffect(() => {
     fetch(`/api/summary`, {
-      method: 'POST',
-      body: JSON.stringify({
-        messages: 'make a summary about the producer quodis beats with no follow ups'
-      })
+      method: 'POST'
     }).then(response => {
       if (response.status === 200) {
         return response.json();
@@ -26,15 +23,13 @@ export default function Spotify() {
 
   return (
     <>
-      {summary ?
+      <div className={`summary ${summary ? 'open' : ''}`}>
         <div
-          className="summary bg-amber-50 border border-amber-200 rounded-lg p-4">
-          <div className="stext-sm text-amber-800">
+          className='bg-amber-50 border border-amber-200 rounded-lg p-4 text-amber-800'>
             <p className="font-medium">AI-Made Summary about Quodis</p>
             <p className="text-amber-700">{summary}</p>
           </div>
-        </div>
-        : null}
+      </div>
 
       <div className='mx-auto p-4 md:w-2/3 lg:w-1/2 xl:w-1/3'>
         <iframe
