@@ -21,17 +21,12 @@ export default function More() {
             title: string;
             url: string;
             description: string;
-          }) => {
-            const resultItem = {
+          }) => ({
               title: result.title,
               url: result.url,
               description: result.description
-            };
 
-            console.log('resultItem', resultItem);
-
-            return resultItem;
-          });
+          }));
           setSearchResult(results);
         }
   });
