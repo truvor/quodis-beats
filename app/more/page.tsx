@@ -38,7 +38,8 @@ export default function More() {
   }, []);
 
   return (
-    <div className="mt-4 flex flex-col items-center justify-center max-w-2xl mx-auto">
+    <div
+      className="mt-4 flex flex-col items-center justify-center max-w-2xl mx-auto px-4 sm:px-0">
       {searchResult.length > 0 ? (
         <div className="w-full bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="space-y-6">
@@ -49,7 +50,7 @@ export default function More() {
                     {result.title}
                   </h2>
 
-                  <span className="text-sm text-green-600 mb-2 truncate font-medium">{result.url}</span>
+                  <p className="text-sm text-green-600 mb-2 truncate font-medium">{result.url}</p>
 
                   <p
                     className="text-gray-800 text-sm leading-relaxed"
