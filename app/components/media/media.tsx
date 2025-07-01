@@ -7,7 +7,7 @@ export default function Media() {
   return (
     <section className={styles.mediaSection}>
       <div className={styles.mediaContainer}>
-        <div className={styles.latestRelease}>
+        <h2 className={styles.latestRelease}>
           <Link href="https://ffm.to/quodismysecretplace" className={styles.releaseLink}>
             <Image width={20}
                    height={20}
@@ -16,7 +16,7 @@ export default function Media() {
             className='mr-2'/>
             My Secret Place • EP • 2025
           </Link>
-        </div>
+        </h2>
         <div className={styles.socialIcons}>
           <Link
             href="https://instagram.com/quodisbeats/"

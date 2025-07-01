@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Quodis Beats',
-  description: 'Listen to and buy original R&B, Hip-Hop, Trap, and Lo-Fi beats by Quodis Beats. Available for streaming on all major platforms and for purchase with instant download.',
+  title: 'Quodis. Stream and Buy R&B, Hip-Hop, Trap, and Lo-Fi Beats',
+  description: 'Listen to and buy original R&B, Hip-Hop, Trap, and Lo-Fi beats by Quodis Beats. Available on most DSPs and markeptlaces.',
 };
 
 export default function RootLayout({

@@ -48,9 +48,9 @@ export default function Navbar() {
   return (
     <section className='navigation'>
       <div className='nav-container'>
-        <div className='brand'>
+        <h1 className='brand'>
           <Link href='/'>Quodis Beats</Link>
-        </div>
+        </h1>
         <nav ref={menuRef}>
           <div className='nav-mobile'>
             <button onClick={handleBurgerToggle}
