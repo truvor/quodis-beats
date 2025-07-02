@@ -18,6 +18,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Quodis. Buy Beats: R&B, Hip-Hop, Trap, and Lo-Fi',
   description: 'Listen to and buy original R&B, Hip-Hop, Trap, and Lo-Fi beats by Quodis Beats. Available on most DSPs and markeptlaces.',
+  icons: {
+    icon: '/icon.png'
+  },
+  keywords: ['Quodis', 'Buy R&B Beats', 'Buy Beats'],
+  authors:[{name: 'Risky4real', url: 'https://risky4real.com'}],
+  creator: 'Risky4real',
 };
 
 export default function RootLayout({
