@@ -213,10 +213,27 @@ nav ul li ul li a {
   }
 }
 
+.widget {
+  height: max(calc(100vh - 70px - 19.5rem), 500px);
+}
 
-/*
-@media only screen and (min-width: 800px) {
-  .marketplace-widget {
-    min-height: calc(100vh - 70px - 10.5rem);
+.summary {
+  max-width: calc(1000px - 2rem);
+  margin: 0 auto;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease, margin-top 0.5s ease;
+  opacity: 0;
+  max-height: 0;
+}
+
+.summary.open {
+  opacity: 1;
+  max-height: 500px;
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .summary {
+    margin: 0 1rem;
   }
-}*/
+}
