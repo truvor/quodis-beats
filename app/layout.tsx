@@ -1,8 +1,8 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
+import Script from "next/script";
 import {SpeedInsights} from "@vercel/speed-insights/next";
 import './globals.css';
-import Analytics from '@/app/components/analytics';
 import Navbar from '@/app/components/navbar/navbar';
 import Media from "@/app/components/media/media";
 const geistSans = Geist({
@@ -53,7 +53,11 @@ export default function RootLayout({
       </div>
     </footer>
 
-    <Analytics/>
+    <Script
+      src={'https://cloud.umami.is/script.js'}
+      data-website-id='de2e8101-b828-4d1f-a43b-98ea88db4186'
+      strategy='afterInteractive'
+    />
     <SpeedInsights/>
     </body>
     </html>
