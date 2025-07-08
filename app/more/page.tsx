@@ -1,23 +1,19 @@
-'use client'
-
-import {useEffect, useState} from 'react';
-
 type SearchResult = {
   title: string;
   url: string;
   description: string;
 }
 
-export default function More() {
-  const [searchResult, setSearchResult] = useState<Array<SearchResult>>([]);
+export default async function More() {
+  // const [searchResult, setSearchResult] = useState<Array<SearchResult>>([]);
 
-  useEffect(() => {
-    fetch(`/api/search?q=quodis`).then(response => response.json())
-      .then(data => {
+    const results = await fetch(`${process.env.BASE_URL}/api/search?q=quodis`);
+    const resultData = await results.json();
+
         // Query limit could be reached
-        let results: Array<SearchResult>;
-        if (data.web && Array(data.web.results)) {
-          results = data.web.results.map((result: {
+        let searchResult: Array<SearchResult> = [];
+        if (resultData.web && Array.isArray(resultData.web.results)) {
+          searchResult = resultData.web.results.map((result: {
             title: string;
             url: string;
             description: string;
@@ -27,10 +23,7 @@ export default function More() {
               description: result.description
 
           }));
-          setSearchResult(results);
         }
-  });
-  }, []);
 
   return (
     <div
