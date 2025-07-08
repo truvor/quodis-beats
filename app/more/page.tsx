@@ -5,25 +5,22 @@ type SearchResult = {
 }
 
 export default async function More() {
-  // const [searchResult, setSearchResult] = useState<Array<SearchResult>>([]);
+  const results = await fetch(`${process.env.BASE_URL}/api/search?q=quodis`);
+  const resultData = await results.json();
 
-    const results = await fetch(`${process.env.BASE_URL}/api/search?q=quodis`);
-    const resultData = await results.json();
+  let searchResult: Array<SearchResult> = [];
+  if (resultData.web && Array.isArray(resultData.web.results)) {
+    searchResult = resultData.web.results.map((result: {
+      title: string;
+      url: string;
+      description: string;
+    }) => ({
+      title: result.title,
+      url: result.url,
+      description: result.description
 
-        // Query limit could be reached
-        let searchResult: Array<SearchResult> = [];
-        if (resultData.web && Array.isArray(resultData.web.results)) {
-          searchResult = resultData.web.results.map((result: {
-            title: string;
-            url: string;
-            description: string;
-          }) => ({
-              title: result.title,
-              url: result.url,
-              description: result.description
-
-          }));
-        }
+    }));
+  }
 
   return (
     <div
