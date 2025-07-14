@@ -43,6 +43,7 @@ export default async function Airbit() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(trackListBody),
+            next: {revalidate: 86400}
         });
 
         if (!result.ok) {

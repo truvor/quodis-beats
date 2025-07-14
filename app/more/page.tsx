@@ -5,7 +5,9 @@ type SearchResult = {
 }
 
 export default async function More() {
-  const results = await fetch(`${process.env.BASE_URL}/api/search?q=quodis`);
+  const results = await fetch(`${process.env.BASE_URL}/api/search?q=quodis`,
+    {next: {revalidate: 86400}}
+  );
   const resultData = await results.json();
 
   let searchResult: Array<SearchResult> = [];

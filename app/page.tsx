@@ -4,7 +4,8 @@ export default async function Home() {
     let summary: string | undefined;
 
     const summaryResult = await fetch(`${process.env.BASE_URL}/api/summary`, {
-        method: 'POST'
+      method: 'POST',
+      next: {revalidate: 86400}
     });
 
     if (summaryResult.status === 200) {

@@ -31,6 +31,7 @@ export default async function Page () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body),
+            next: {revalidate: 86400}
         });
 
         if (!result.ok) {
