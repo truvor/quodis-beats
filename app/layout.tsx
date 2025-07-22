@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import Script from "next/script";
+import React from "react";
 import './globals.css';
 import Navbar from '@/app/components/navbar/navbar';
 import Media from "@/app/components/media/media";
@@ -52,11 +53,12 @@ export default function RootLayout({
       </div>
     </footer>
 
-    <Script
-      src={'https://cloud.umami.is/script.js'}
-      data-website-id='de2e8101-b828-4d1f-a43b-98ea88db4186'
-      strategy='afterInteractive'
-    />
+    {process.env.NODE_ENV === 'production' &&
+      <Script
+        src={'https://cloud.umami.is/script.js'}
+        data-website-id='de2e8101-b828-4d1f-a43b-98ea88db4186'
+        strategy='afterInteractive'
+      />}
     </body>
     </html>
   );
