@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     icon: '/icon.png'
   },
   keywords: ['Quodis', 'Buy R&B Beats', 'Buy Beats'],
-  authors:[{name: 'Risky4real', url: 'https://risky4real.com'}],
+  authors: [{name: 'Risky4real', url: 'https://risky4real.com'}],
   creator: 'Risky4real',
 };
 

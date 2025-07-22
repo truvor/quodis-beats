@@ -5,23 +5,15 @@ type SearchResult = {
 }
 
 export default async function More() {
-  const results = await fetch(`${process.env.BASE_URL}/api/search?q=quodis`,
+  const results = await fetch(`${process.env.BASE_URL}/api/search`,
     {next: {revalidate: 86400}}
   );
-  const resultData = await results.json();
 
-  let searchResult: Array<SearchResult> = [];
-  if (resultData.web && Array.isArray(resultData.web.results)) {
-    searchResult = resultData.web.results.map((result: {
-      title: string;
-      url: string;
-      description: string;
-    }) => ({
-      title: result.title,
-      url: result.url,
-      description: result.description
-
-    }));
+  let searchResult: SearchResult[] = [];
+  if (results.ok) {
+    searchResult = await results.json();
+  } else {
+    throw new Error('No search result');
   }
 
   return (
