@@ -8,7 +8,7 @@ export default async function Home() {
       next: {revalidate: 86400}
     });
 
-    if (summaryResult.status === 200) {
+    if (summaryResult.ok) {
         summary = (await summaryResult.json() as GenerateTextResult<never, never>).text;
     }
 
