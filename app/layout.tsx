@@ -5,6 +5,7 @@ import React from "react";
 import './globals.css';
 import Navbar from '@/app/components/navbar/navbar';
 import Media from "@/app/components/media/media";
+import {umamiAttr} from "@/app/lib/umami";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -48,7 +49,8 @@ export default function RootLayout({
       <span
         className='text-base text-gray-500 sm:text-center dark:text-gray-400'>Developed by <a
         href='https://risky4real.com'
-        className='underline underline-offset-4'>Risky4real</a>
+        className='underline underline-offset-4'
+        {...umamiAttr('Risky4real Link')}>Risky4real</a>
       </span>
       </div>
     </footer>

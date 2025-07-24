@@ -1,19 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./media.module.css";
+import {umamiAttr} from "@/app/lib/umami";
 
 export default function Media() {
   return (
     <section className={styles.mediaSection}>
       <div className={styles.mediaContainer}>
         <h2 className={styles.latestRelease}>
-          <Link href="https://ffm.to/quodismysecretplace" className={styles.releaseLink}>
+          <Link href="https://distrokid.com/hyperfollow/quodis/the-final-chapter" className={styles.releaseLink}>
             <Image width={20}
                    height={20}
-                   src='/secret_place_20x20_circle.png'
-                   alt='My Secret Place (2025)'
+                   src='/final_chapter_20x20.png'
+                   alt='The Final Chapter (2025)'
+                   {...umamiAttr('EP Pre-save Button')}
             className='mr-2'/>
-            My Secret Place • EP • 2025
+            The Final Chapter • EP • Out on 7/13/2025
           </Link>
         </h2>
         <div className={styles.socialIcons}>
@@ -22,6 +24,7 @@ export default function Media() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
+            {...umamiAttr('Instagram Link')}
           >
             <Image
               src="/instagram.svg"
@@ -35,6 +38,7 @@ export default function Media() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
+            {...umamiAttr('Tiktok Link')}
           >
             <Image
               src="/tiktok.svg"
@@ -48,6 +52,7 @@ export default function Media() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
+            {...umamiAttr('Snapchat Link')}
           >
             <Image
               src="/snapchat.svg"
@@ -61,6 +66,7 @@ export default function Media() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
+            {...umamiAttr('Youtube Link')}
           >
             <Image
               src="/youtube.svg"
