@@ -1,14 +1,14 @@
 type trackData = { v2Id: string, title: string };
 
 export default async function Page() {
-  const results = await fetch(`${process.env.BASE_URL}/api/beatstars`,
+  const result = await fetch(`${process.env.BASE_URL}/api/beatstars`,
     {next: {revalidate: 86400}});
 
   let trackList: trackData[] = [];
-  if (results.ok) {
-    trackList = await results.json();
+  if (result.ok) {
+    trackList = await result.json();
   } else {
-    throw new Error('Failed to fetch tracklist');
+    throw new Error('Failed to fetch tracklist from Beatstars');
   }
 
   return (

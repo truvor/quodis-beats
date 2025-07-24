@@ -1,64 +1,14 @@
 type trackData = { alias: string, name: string };
 
 export default async function Airbit() {
-    const trackListQuery = `
-  query SearchBeatsByUser($userId: ID!, $first: Int!, $page: Int!, $search: String!) {
-  searchBeatsByUser(
-    first: $first
-    page: $page
-    userId: $userId
-    search: $search
-    onlyMarketPlace: true
-  ) {
-    data {
-      ... on Beat {
-        name
-        alias
-      }
-    }
-    paginatorInfo {
-      hasMorePages
-      total
-    }
-  }
-}
-`;
-    const trackListBody = {
-        operationName: 'SearchBeatsByUser',
-        query: trackListQuery,
-        variables: {
-            first: 3,
-            page: 1,
-            search: '',
-            userId: '98319'
-        }
-    };
+    const result = await fetch(`${process.env.BASE_URL}/api/airbit`,
+      {next: {revalidate: 86400}});
 
-    let trackList: Array<trackData> | undefined = undefined;
-
-    try {
-        const result = await fetch('https://api.airbit.com/gpl', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(trackListBody),
-            next: {revalidate: 86400}
-        });
-
-        if (!result.ok) {
-            throw new Error('Failed to fetch tracklist');
-
-        }
-
-        const trackListData = await result.json();
-        trackList = trackListData.data.searchBeatsByUser.data.map((item: trackData) => ({
-            alias: item.alias,
-            name: item.name
-        }));
-
-    } catch (error: unknown) {
-        console.error('Error fetching tracklist:', error);
+    let trackList: trackData[] = [];
+    if (result.ok) {
+        trackList = await result.json();
+    } else {
+        throw new Error('Failed to fetch tracklist from Airbit');
     }
 
     return (
