@@ -15,7 +15,7 @@ export default function Media() {
                    alt='The Final Chapter (2025)'
                    {...umamiAttr('EP Pre-save Button')}
             className='mr-2'/>
-            The Final Chapter • EP • Out on 7/13/2025
+            The Final Chapter • EP • Out on 8/13/2025
           </Link>
         </h2>
         <div className={styles.socialIcons}>
