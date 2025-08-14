@@ -7,15 +7,9 @@ export default function Media() {
   return (
     <section className={styles.mediaSection}>
       <div className={styles.mediaContainer}>
-        <h2 className={styles.latestRelease}>
-          <Link href="https://distrokid.com/hyperfollow/quodis/the-final-chapter" className={styles.releaseLink}>
-            <Image width={20}
-                   height={20}
-                   src='/final_chapter_20x20.png'
-                   alt='The Final Chapter (2025)'
-                   {...umamiAttr('EP Pre-save Button')}
-            className='mr-2'/>
-            The Final Chapter • EP • Out on 8/13/2025
+        <h2 className={styles.release}>
+          <Link href="/" className={styles.release}>
+            The Final Chapter • EP • On all Platforms!
           </Link>
         </h2>
         <div className={styles.socialIcons}>

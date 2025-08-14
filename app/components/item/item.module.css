@@ -1,0 +1,25 @@
+.item {
+  color: var(--color-gray-200);
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  background-color: #6C8C75;
+  border-style: solid;
+  border-width: thin;
+  padding: 0.5em 0;
+  transition-duration: 0.2ms;
+  width: 100%;
+  border-radius: 100px;
+}
+
+.item:hover {
+  background-color: aquamarine;
+  color: #131B1D;
+  box-shadow: 0 0.5em 0.5em -0.4em #ECFFDC;
+  transform: translateY(-0.25em);
+}
+
+.item:active {
+  background-color: aqua;
+  color: #818a91;
+}

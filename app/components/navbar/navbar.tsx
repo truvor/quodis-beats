@@ -62,7 +62,8 @@ export default function Navbar() {
           </div>
           <ul className={`nav-list ${isBurgerOpen ? 'open' : ''}
               ${isDropdownOpen ? 'visible' : ''}`}>
-            <li><Link onClick={handleLinkClick} href='/'><span>Spotify</span></Link></li>
+            <li><Link onClick={handleLinkClick} href='/'><span>Home</span></Link></li>
+            <li><Link onClick={handleLinkClick} href='/spotify'><span>Spotify</span></Link></li>
             <li ref={dropdownRef}><Link onClick={handleDropdownToggle}
                                         href=''><span
               className='dropdown-selector'>Buy</span></Link>

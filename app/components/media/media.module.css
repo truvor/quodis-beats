@@ -12,17 +12,20 @@
   align-items: center;
 }
 
-.latestRelease .releaseLink {
+.release {
   display: flex;
   align-items: center;
   font-weight: 600;
-  color: #f8f9fa;
+  color: oklch(50% 0.134 242.749);
   text-decoration: none;
+  text-shadow: 0 0 5px oklch(98.7% 0.026 102.212), 0 0 10px oklch(97.3% 0.071 103.193), 0 0 15px oklch(94.5% 0.129 101.54), 0 0
+  20px oklch(90.5% 0.182 98.111);
+  transition: text-shadow 0.3s ease;
+}
 
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 0.75rem 1rem;
-  border-radius: 3rem;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4), 0 0 20px rgba(102, 126, 234, 0.3);
+.release:hover {
+  text-shadow: 0 0 8px oklch(98.7% 0.026 102.212), 0 0 16px oklch(97.3% 0.071 103.193), 0 0 24px oklch(94.5% 0.129 101.54), 0 0
+  32px oklch(90.5% 0.182 98.111);
 }
 
 .socialIcons {
