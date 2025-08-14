@@ -56,7 +56,7 @@ export default function Media() {
             />
           </Link>
           <Link
-            href="https://youtube.com/@lofibeatsbyquodis"
+            href="https://youtube.com/@quodisbeats"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
