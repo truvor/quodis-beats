@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     fetches: {
       fullUrl: true
     }
+  },
+  experimental: {
+    reactCompiler: true
   }
 };
 

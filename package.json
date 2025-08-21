@@ -14,6 +14,7 @@
     "@openrouter/ai-sdk-provider": "^0.7.2",
     "@sentry/nextjs": "^9.39.0",
     "ai": "^4.3.16",
+    "babel-plugin-react-compiler": "^19.1.0-rc.2",
     "next": "15.5.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
