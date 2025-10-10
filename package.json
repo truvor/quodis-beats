@@ -16,25 +16,25 @@
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.74.0",
     "ai": "^4.3.16",
-    "babel-plugin-react-compiler": "^19.1.0-rc.2",
-    "next": "15.5.0",
-    "react": "19.1.1",
-    "react-dom": "19.1.1",
+    "babel-plugin-react-compiler": "^19.1.0-rc.3",
+    "next": "15.5.4",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "zod": "^3.25.67"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "19.1.10",
-    "@types/react-dom": "19.1.7",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.1",
     "eslint": "^9",
-    "eslint-config-next": "15.5.0",
+    "eslint-config-next": "15.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
   "overrides": {
-    "@types/react": "19.1.10",
-    "@types/react-dom": "19.1.7"
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.1"
   }
 }
