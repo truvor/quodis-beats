@@ -7,9 +7,7 @@ const nextConfig: NextConfig = {
       fullUrl: true
     }
   },
-  experimental: {
-    reactCompiler: true
-  }
+  reactCompiler: true
 };
 
 export default withSentryConfig(nextConfig, {
