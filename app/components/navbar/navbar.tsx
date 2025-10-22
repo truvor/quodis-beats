@@ -2,6 +2,7 @@
 
 import React, {useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
+import Login from "@/app/components/navbar/login";
 
 export default function Navbar() {
   const dropdownRef = useRef<HTMLLIElement | null>(null);
@@ -73,6 +74,9 @@ export default function Navbar() {
               </ul>
             </li>
             <li><Link onClick={handleLinkClick} href='/more'><span>Internet Speaks</span></Link></li>
+            {process.env.NODE_ENV === 'development' &&
+              <Login handleClick={handleLinkClick}/>
+            }
           </ul>
         </nav>
       </div>
