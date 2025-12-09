@@ -1,4 +1,3 @@
-import {GenerateTextResult} from "ai";
 import Image from "next/image";
 import {Item} from "@/app/components/item/item";
 
@@ -8,8 +7,6 @@ type linkType = {
 }
 
 export default async function Home() {
-    let summary: string | undefined;
-
   const linkList = [
     {name: 'Spotify', url: 'https://open.spotify.com/album/4BZoNvMOn2pjZwkOTgsg93?si=9Wfv8RyBT9yuMaCxeuLBzg'},
     {name: 'Apple', url: 'https://music.apple.com/us/album/the-final-chapter/1828336266'},
@@ -22,35 +19,16 @@ export default async function Home() {
     {name: 'iHeart', url: 'https://www.iheart.com/artist/quodis-32463888/albums/the-final-chapter-341168765/'}
   ];
 
-    const summaryResult = await fetch(`${process.env.BASE_URL}/api/summary`, {
-      method: 'POST',
-      next: {revalidate: 86400}
-    });
-
-    if (summaryResult.ok) {
-        summary = (await summaryResult.json() as GenerateTextResult<never, never>).text;
-    }
-
     return (
-      <>
-          <div className={`summary ${summary ? 'open' : ''}`}>
-              <div
-                className='bg-amber-50 border border-amber-200 rounded-lg p-4 text-amber-800'>
-                  <p className="font-medium">AI-Made Summary about Quodis</p>
-                  <p className="text-amber-700">{summary}</p>
-              </div>
-          </div>
-
-        <div className='mx-auto p-4 md:w-2/3 lg:w-1/2 xl:w-1/3'>
-          <Image className={'cover'} src='/final_chapter_600x600.jpg'
-                 width={600} height={600}
-                 alt='EP artwork'/>
-          <div className={'button-grid'}>
-            {linkList.map((item: linkType) => {
-              return (<Item key={item.url} name={item.name} url={item.url}/>);
-            })}
-          </div>
+      <div className='mx-auto p-4 md:w-2/3 lg:w-1/2 xl:w-1/3'>
+        <Image className={'cover'} src='/final_chapter_600x600.jpg'
+               width={600} height={600}
+               alt='EP artwork'/>
+        <div className={'button-grid'}>
+          {linkList.map((item: linkType) => {
+            return (<Item key={item.url} name={item.name} url={item.url}/>);
+          })}
         </div>
-      </>
+      </div>
     );
 }
