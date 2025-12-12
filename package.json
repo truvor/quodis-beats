@@ -16,7 +16,9 @@
     "next": "16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "zod": "^3.25.67"
+    "react-hook-form": "^7.68.0",
+    "zod": "^3.25.67",
+    "@hookform/resolvers": "^2.9.10"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
