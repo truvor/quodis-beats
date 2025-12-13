@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@sentry/nextjs": "^10.29.0",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.74.0",
@@ -17,8 +18,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^7.68.0",
-    "zod": "^3.25.67",
-    "@hookform/resolvers": "^2.9.10"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
