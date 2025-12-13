@@ -18,7 +18,7 @@ export default function LoginPage() {
     watch,
     formState: { errors, isValid, isSubmitting },
   } = useForm<AuthSchemaType>({
-    mode: "onChange",
+    mode: "onBlur",
     resolver: zodResolver(authSchema),
   });
 
@@ -33,7 +33,6 @@ export default function LoginPage() {
       if (action === "signup") {
         response = await signup(data);
       } else {
-        // Default to login when "login" button is clicked or if no action is detected
         response = await login(data);
       }
 
@@ -47,9 +46,9 @@ export default function LoginPage() {
 
   return (
     <form
-      className={`flex flex-col items-center justify-center
-bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-6
-max-w-xs mx-auto`}
+      className={`flex flex-col items-left
+bg-white rounded-lg shadow-sm border border-gray-200 py-6 px-20 space-y-6
+max-w-sm mx-auto`}
       onSubmit={onSubmit}
     >
       <div className="flex flex-col items-start">
@@ -58,12 +57,15 @@ max-w-xs mx-auto`}
         </label>
         <input
           id="email"
-          className="border-b-1 text-gray-600"
+          className="border-b-1 text-gray-600 w-full"
           type="email"
           autoFocus
           autoComplete="email"
           {...register("email", { required: "Email is required" })}
         />
+        {errors.email && (
+          <span className="text-xs text-red-500">{errors.email.message}</span>
+        )}
       </div>
       <div className="flex flex-col items-start">
         <label className="text-gray-500" htmlFor="password">
@@ -71,11 +73,16 @@ max-w-xs mx-auto`}
         </label>
         <input
           id="password"
-          className="border-b-1 text-gray-600"
+          className="border-b-1 text-gray-600 w-full"
           type="password"
           autoComplete="password"
           {...register("password", { required: "Password is required" })}
         />
+        {errors.password && (
+          <span className="text-xs text-red-500">
+            {errors.password.message}
+          </span>
+        )}
       </div>
       <div className="flex justify-around w-full">
         <button
