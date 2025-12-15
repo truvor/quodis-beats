@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { login, signup } from "./actions";
 import { authSchema, type AuthSchemaType } from "./authSchema";
@@ -15,7 +15,6 @@ export default function LoginPage() {
     register,
     handleSubmit,
     reset,
-    watch,
     formState: { errors, isValid, isSubmitting },
   } = useForm<AuthSchemaType>({
     mode: "onBlur",
@@ -39,7 +38,6 @@ export default function LoginPage() {
       if (response?.error) throw new Error(response.error);
     } catch (error) {
       console.log(error);
-    } finally {
     }
     reset();
   });
@@ -75,7 +73,7 @@ max-w-sm mx-auto`}
           id="password"
           className="border-b-1 text-gray-600 w-full"
           type="password"
-          autoComplete="password"
+          autoComplete="current-password"
           {...register("password", { required: "Password is required" })}
         />
         {errors.password && (
