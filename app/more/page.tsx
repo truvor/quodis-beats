@@ -18,7 +18,7 @@ export default async function More() {
 
   return (
     <div
-      className="mt-4 flex flex-col items-center justify-center max-w-2xl mx-auto px-4 sm:px-0">
+      className="flex flex-col items-center justify-center max-w-2xl mx-auto px-4 sm:px-0">
       <div
         className="w-full bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-6">
         {searchResult.length > 0 ? (

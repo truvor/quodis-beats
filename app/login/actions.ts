@@ -1,49 +1,38 @@
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
-import { createClient } from '@/utils/supabase/server'
+"use server";
 
-export async function login(formData: FormData) {
-  'use server'
-  const supabase = await createClient()
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
+import { authSchema, type AuthSchemaType } from "./authSchema";
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
+async function handleAuth(
+  formData: AuthSchemaType,
+  operation: (
+    supabase: any,
+    data: AuthSchemaType,
+  ) => Promise<{ error?: { message?: string } | null }>,
+) {
+  const result = authSchema.safeParse(formData);
+  if (!result.success) {
+    return { formData, error: "Invalid input" };
   }
 
-  const { error } = await supabase.auth.signInWithPassword(data)
-
+  const supabase = await createClient();
+  const { error } = await operation(supabase, result.data);
   if (error) {
-    throw new Error(error.message)
-
-    //redirect('/error')
+    throw new Error(error.message);
   }
 
-  revalidatePath('/admin')
-  redirect('/admin')
+  revalidatePath("/admin");
+  redirect("/admin");
 }
 
-export async function signup(formData: FormData) {
-  'use server'
-  const supabase = await createClient()
+export async function login(formData: AuthSchemaType) {
+  return handleAuth(formData, (supabase, data) =>
+    supabase.auth.signInWithPassword(data),
+  );
+}
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
-  }
-
-  const { error } = await supabase.auth.signUp(data)
-
-  if (error) {
-    throw new Error(error.message)
-
-    //redirect('/error')
-  }
-
-  revalidatePath('/admin')
-  redirect('/admin')
+export async function signup(formData: AuthSchemaType) {
+  return handleAuth(formData, (supabase, data) => supabase.auth.signUp(data));
 }
