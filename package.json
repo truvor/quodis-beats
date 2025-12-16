@@ -19,6 +19,7 @@
     "react-dom": "19.2.0",
     "react-h5-audio-player": "^3.10.1",
     "react-hook-form": "^7.68.0",
+    "stripe": "^20.0.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {
