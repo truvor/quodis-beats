@@ -11,6 +11,8 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@sentry/nextjs": "^10.29.0",
+    "@stripe/react-stripe-js": "^5.4.1",
+    "@stripe/stripe-js": "^8.6.0",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.74.0",
     "babel-plugin-react-compiler": "^1.0.0",

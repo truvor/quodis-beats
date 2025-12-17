@@ -1,14 +1,5 @@
-import Stripe from "stripe";
+import CheckoutForm from "@/app/components/checkout-form/checkout-form";
 
-const stripe = new Stripe(String(process.env.STRIPE_SECRET_KEY));
-
-const balance = await stripe.balance.retrieve();
-
-export default async function Page() {
-  return (
-    <>
-      <h1>Customers</h1>
-      <span>{balance.available[0].amount}</span>
-    </>
-  );
+export default function PurchasePage() {
+  return <CheckoutForm uiMode="embedded" />;
 }

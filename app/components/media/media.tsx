@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./media.module.css";
-import {umamiAttr} from "@/app/lib/umami";
+import { umamiAttr } from "@/lib/umami";
 
 export default function Media() {
   return (
@@ -18,7 +18,7 @@ export default function Media() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
-            {...umamiAttr('Instagram Link')}
+            {...umamiAttr("Instagram Link")}
           >
             <Image
               src="/instagram.svg"
@@ -32,45 +32,30 @@ export default function Media() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
-            {...umamiAttr('Tiktok Link')}
+            {...umamiAttr("Tiktok Link")}
           >
-            <Image
-              src="/tiktok.svg"
-              width={20}
-              height={20}
-              alt="TikTok"
-            />
+            <Image src="/tiktok.svg" width={20} height={20} alt="TikTok" />
           </Link>
           <Link
             href="https://www.snapchat.com/add/quodis_beats"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
-            {...umamiAttr('Snapchat Link')}
+            {...umamiAttr("Snapchat Link")}
           >
-            <Image
-              src="/snapchat.svg"
-              width={20}
-              height={20}
-              alt="Snapchat"
-            />
+            <Image src="/snapchat.svg" width={20} height={20} alt="Snapchat" />
           </Link>
           <Link
             href="https://youtube.com/@quodisbeats"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialIcon}
-            {...umamiAttr('Youtube Link')}
+            {...umamiAttr("Youtube Link")}
           >
-            <Image
-              src="/youtube.svg"
-              width={20}
-              height={20}
-              alt="YouTube"
-            />
+            <Image src="/youtube.svg" width={20} height={20} alt="YouTube" />
           </Link>
         </div>
       </div>
     </section>
-  )
+  );
 }
