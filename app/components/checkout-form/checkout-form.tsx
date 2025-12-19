@@ -33,16 +33,6 @@ export default function CheckoutForm(props: CheckoutFormProps) {
     <>
       <form action={formAction}>
         <input type="hidden" name="uiMode" value={props.uiMode} />
-        {/*<CustomDonationInput
-          className="checkout-style"
-          name="customDonation"
-          min={config.MIN_AMOUNT}
-          max={config.MAX_AMOUNT}
-          step={config.AMOUNT_STEP}
-          currency={config.CURRENCY}
-          onChange={handleInputChange}
-          value={input.customDonation}
-        />*/}
         <button
           className="bg-blue-300 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           type="submit"

@@ -101,7 +101,11 @@ export default function Navbar() {
                 <span>Internet Speaks</span>
               </Link>
             </li>
-            <Activity mode={"visible"}>
+            <Activity
+              mode={
+                process.env.NODE_ENV === "development" ? "visible" : "hidden"
+              }
+            >
               <Login handleClick={handleLinkClick} />
             </Activity>
           </ul>
