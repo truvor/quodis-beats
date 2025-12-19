@@ -13,7 +13,7 @@ interface CheckoutFormProps {
   uiMode: Stripe.Checkout.SessionCreateParams.UiMode;
 }
 
-export default function CheckoutForm(props: CheckoutFormProps) {
+export default function CheckoutForm(props: Readonly<CheckoutFormProps>) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   const formAction = async (data: FormData): Promise<void> => {
@@ -26,7 +26,7 @@ export default function CheckoutForm(props: CheckoutFormProps) {
 
     if (uiMode === "embedded") return setClientSecret(client_secret);
 
-    window.location.assign(url as string);
+    globalThis.location.assign(url as string);
   };
 
   return (

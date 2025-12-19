@@ -4,9 +4,9 @@ import { redirect } from "next/navigation";
 
 export default async function ResultPage({
   searchParams,
-}: {
+}: Readonly<{
   searchParams: { session_id: string };
-}) {
+}>) {
   if (!searchParams.session_id) redirect("/login");
 
   const checkoutSession: Stripe.Checkout.Session =
