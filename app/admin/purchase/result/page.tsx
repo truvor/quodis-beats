@@ -1,13 +1,13 @@
 import type { Stripe } from "stripe";
 import { stripe } from "@/lib/stripe";
+import { redirect } from "next/navigation";
 
 export default async function ResultPage({
   searchParams,
 }: {
   searchParams: { session_id: string };
 }) {
-  if (!searchParams.session_id)
-    throw new Error("Please provide a valid session_id (`cs_test_...`)");
+  if (!searchParams.session_id) redirect("/login");
 
   const checkoutSession: Stripe.Checkout.Session =
     await stripe.checkout.sessions.retrieve(searchParams.session_id, {
