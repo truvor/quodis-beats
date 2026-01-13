@@ -22,7 +22,11 @@ export async function createCheckoutSession(productId: string) {
     await stripe.checkout.sessions.create({
       mode: "payment",
       ui_mode: "embedded",
-      return_url: `${origin}/purchase/result?session_id={CHECKOUT_SESSION_ID}`,
+      return_url: `${origin}/admin/purchase/result?session_id={CHECKOUT_SESSION_ID}`,
+      metadata: {
+        beat_id: product.id,
+        contract_type: "lease", // lease | buy | exclusive
+      },
       line_items: [
         {
           price_data: {
@@ -40,7 +44,6 @@ export async function createCheckoutSession(productId: string) {
 
   return {
     client_secret: session.client_secret,
-    url: session.url,
   };
 }
 
