@@ -13,6 +13,8 @@ interface CheckoutFormProps {
   uiMode: Stripe.Checkout.SessionCreateParams.UiMode;
 }
 
+const BEAT_ID = "beat_1";
+
 export default function CheckoutForm(props: Readonly<CheckoutFormProps>) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
@@ -22,11 +24,9 @@ export default function CheckoutForm(props: Readonly<CheckoutFormProps>) {
     ) as Stripe.Checkout.SessionCreateParams.UiMode;
 
     // Pass uiMode to define url parameters conditionally
-    const { client_secret, url } = await createCheckoutSession("beat 1");
+    const { client_secret } = await createCheckoutSession(BEAT_ID);
 
     if (uiMode === "embedded") return setClientSecret(client_secret);
-
-    globalThis.location.assign(url as string);
   };
 
   return (
