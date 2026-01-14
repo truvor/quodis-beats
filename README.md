@@ -1,4 +1,6 @@
-This application is an aggregator of create word done by the producer Quodis (Quodis Beats)
+This application is a license store of the music compositions done by the producer [Quodis](https://www.beatstars.com/quodis)
+
+Second part of the application that is responsible for generating license contracts according to the purchase is located at https://github.com/truvor/contract-handler
 
 ## Getting Started
 
@@ -15,3 +17,6 @@ next start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Sequence diagram of the designed system
+![Sequence Diagram](docs/Sequence.jpg)
