@@ -1,232 +1,238 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  background-color: #E1DCD7;
+    background-color: #e1dcd7;
 }
 
 main {
-  min-height: calc(100vh - 70px - 9rem);
-  padding-top: 1rem;
+    min-height: calc(100vh - 70px - 9rem);
+    padding-top: 1rem;
 }
 
 nav {
-  float: right;
+    float: right;
 }
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 nav ul li {
-  float: left;
-  position: relative;
+    float: left;
+    position: relative;
 }
-nav ul li a {
-  display: block;
-  padding: 0 20px;
-  line-height: 70px;
-  background: #ffffff;
-  color: #463f3f;
-  text-decoration: none;
+nav ul li :is(a, button) {
+    display: block;
+    padding: 0 20px;
+    line-height: 70px;
+    background: #ffffff;
+    color: #463f3f;
+    text-decoration: none;
 }
-nav ul li a:hover {
-  background: #f2f2f2;
-  color: #fb5958;
+nav ul li :is(a, button):hover {
+    background: #f2f2f2;
+    color: #fb5958;
+}
+nav ul li button {
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
 }
 
 .dropdown-selector:after {
-  padding-left: 4px;
-  content: ' ▾';
+    padding-left: 4px;
+    content: " ▾";
 }
 
 /* Dropdown items */
 nav ul li ul li {
-  min-width: 190px;
+    min-width: 190px;
 }
 nav ul li ul li a {
-  padding: 15px;
-  line-height: 20px;
+    padding: 15px;
+    line-height: 20px;
 }
 
 .nav-dropdown {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  position: absolute;
-  z-index: 1;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
-.nav-dropdown.open {
-  max-height: 500px;
-}
-
-.nav-mobile {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 70px;
-  width: 70px;
-}
-
-@media only screen and (max-width: 800px) {
-  .nav-mobile {
-    display: block;
-  }
-
-  nav {
-    width: 100%;
-    padding: 70px 0 15px;
-  }
-
-  .nav-list {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
     position: absolute;
-    width: 100%;
+    z-index: 1;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-  }
+}
+.nav-dropdown.open {
+    max-height: 500px;
+}
 
-  .nav-list.open {
-    max-height: 300px;
-  }
+.nav-mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 70px;
+    width: 70px;
+}
 
-  .nav-list.visible {
-    overflow: visible;
-  }
+@media only screen and (max-width: 800px) {
+    .nav-mobile {
+        display: block;
+    }
 
-  nav ul li {
-    float: none;
-  }
-  nav ul li a {
-    padding: 15px;
-    line-height: 20px;
-  }
-  nav ul li ul li a {
-    padding-left: 30px;
-  }
+    nav {
+        width: 100%;
+        padding: 70px 0 15px;
+    }
+
+    .nav-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        position: absolute;
+        width: 100%;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-list.open {
+        max-height: 300px;
+    }
+
+    .nav-list.visible {
+        overflow: visible;
+    }
+
+    nav ul li {
+        float: none;
+    }
+    nav ul li a {
+        padding: 15px;
+        line-height: 20px;
+    }
+    nav ul li ul li a {
+        padding-left: 30px;
+    }
 }
 #nav-toggle {
-  position: absolute;
-  left: 18px;
-  top: 22px;
-  cursor: pointer;
-  padding: 10px 35px 16px 0;
+    position: absolute;
+    left: 18px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0;
 }
 #nav-toggle span,
 #nav-toggle span:before,
 #nav-toggle span:after {
-  cursor: pointer;
-  border-radius: 1px;
-  height: 5px;
-  width: 35px;
-  background: #463f3f;
-  position: absolute;
-  display: block;
-  content: '';
-  transition: all 300ms ease-in-out;
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: #463f3f;
+    position: absolute;
+    display: block;
+    content: "";
+    transition: all 300ms ease-in-out;
 }
 #nav-toggle span:before {
-  top: -10px;
+    top: -10px;
 }
 #nav-toggle span:after {
-  bottom: -10px;
+    bottom: -10px;
 }
 #nav-toggle.active span {
-  background-color: transparent;
+    background-color: transparent;
 }
-#nav-toggle.active span:before, #nav-toggle.active span:after {
-  top: 0;
+#nav-toggle.active span:before,
+#nav-toggle.active span:after {
+    top: 0;
 }
 #nav-toggle.active span:before {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 #nav-toggle.active span:after {
-  transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 /*
 .navigation – the outer wrapper for the navbar. Specifies the height and color, and will stretch the full width of the viewport.
 */
 .navigation {
-  height: 70px;
-  background: #ffffff;
+    height: 70px;
+    background: #ffffff;
 }
 
 /*
 .nav-container – the inner wrapper for the navbar. Defines how far the actual content should stretch.
 */
 .nav-container {
-  max-width: 1000px;
-  margin: 0 auto;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .brand {
-  position: absolute;
-  padding-left: 20px;
-  float: left;
-  line-height: 70px;
-  text-transform: uppercase;
-  font-size: 1.4em;
+    position: absolute;
+    padding-left: 20px;
+    float: left;
+    line-height: 70px;
+    text-transform: uppercase;
+    font-size: 1.4em;
 }
 .brand a,
 .brand a:visited {
-  color: #463f3f;
-  text-decoration: none;
+    color: #463f3f;
+    text-decoration: none;
 }
 
 .marketplace-widget {
-  border-radius: .75rem;
-  overflow: hidden;
-  max-width: 1000px;
-  margin: 1rem auto 0 auto;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 1rem auto 0 auto;
 }
 
 @media only screen and (max-width: 800px) {
-  .marketplace-widget {
-    margin: 1rem 1rem 0 1rem;
-  }
+    .marketplace-widget {
+        margin: 1rem 1rem 0 1rem;
+    }
 }
 
 .widget {
-  height: max(calc(100vh - 70px - 19.5rem), 500px);
+    height: max(calc(100vh - 70px - 19.5rem), 500px);
 }
 
 .cover {
-  width: 100%;
-  margin-bottom: 0.3em;
+    width: 100%;
+    margin-bottom: 0.3em;
 }
 
 .button-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-template-rows: auto;
-  grid-gap: 0.8rem;
-  margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 0.8rem;
+    margin-top: 1rem;
 }

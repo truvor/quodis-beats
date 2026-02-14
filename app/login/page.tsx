@@ -1,9 +1,10 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { login, signup } from "./actions";
 import { authSchema, type AuthSchemaType } from "./authSchema";
+import { createClient } from "@/utils/supabase/client";
 
 export type AuthFormData = {
   email: string;
@@ -20,22 +21,33 @@ export default function LoginPage() {
     mode: "onBlur",
     resolver: zodResolver(authSchema),
   });
+  const router = useRouter();
 
   const onSubmit = handleSubmit(async (data: AuthSchemaType, event?: any) => {
     const submitter = event?.nativeEvent?.submitter as
       | HTMLButtonElement
       | undefined;
     const action = submitter?.name;
+    const supabase = createClient();
 
     try {
-      let response;
-      if (action === "signup") {
-        response = await signup(data);
-      } else {
-        response = await login(data);
+      let error = null;
+      const result = authSchema.safeParse(data);
+      if (!result.success) {
+        error = result.error;
+      }
+      if (error) {
+        throw new Error(error.message);
       }
 
-      if (response?.error) throw new Error(response.error);
+      if (action === "signup") {
+        error = (await supabase.auth.signUp(data))?.error;
+      } else {
+        error = (await supabase.auth.signInWithPassword(data))?.error;
+      }
+
+      if (error) throw new Error(error.message);
+      router.push("/admin");
     } catch (error) {
       console.log(error);
     }
