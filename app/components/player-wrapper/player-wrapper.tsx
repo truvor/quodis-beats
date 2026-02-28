@@ -1,39 +1,53 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import BeatCard from "./beat-card";
 
-function PlayerWrapper() {
-  const [beatUrl, setBeatUrl] = useState(
-    "https://9ty5evfxd16kbu1f.public.blob.vercel-storage.com/GANG-DNjLaVlzP0QVzWmDeikbOd8LaAfNmB.mp3",
-  );
-  const [isPlaying, setIsPlaying] = useState(false);
-  const player = useRef(null);
+const trackList = [
+  {
+    id: 0,
+    url: "https://9ty5evfxd16kbu1f.public.blob.vercel-storage.com/GANG-DNjLaVlzP0QVzWmDeikbOd8LaAfNmB.mp3",
+  },
+  {
+    id: 1,
+    url: "https://9ty5evfxd16kbu1f.public.blob.vercel-storage.com/GOOD.mp3",
+  },
+];
 
-  const togglePlay = (url: string) => {
-    setBeatUrl(
-      "https://9ty5evfxd16kbu1f.public.blob.vercel-storage.com/GOOD.mp3",
-    );
-    setIsPlaying(!isPlaying);
+function PlayerWrapper() {
+  const [beatId, setBeatId] = useState(0);
+  const player = useRef<AudioPlayer>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const togglePlay = (id: number) => {
+    setBeatId(id);
     player?.current?.playAudioPromise();
   };
 
   return (
-    <div className="flex flex-col items-center">
-      {Array(10)
-        .fill(null)
-        .map((_item, index) => (
-          <BeatCard key={index} play={togglePlay} />
-        ))}
-      <AudioPlayer
-        className="sticky bottom-0"
-        src={beatUrl}
-        showSkipControls
-        ref={player}
-      />
-    </div>
+    <>
+      <div className="flex flex-col items-center mb-4">
+        {Array(10)
+          .fill(null)
+          .map((_item, index) => (
+            <BeatCard key={index} id={index} play={togglePlay} />
+          ))}
+      </div>
+      {isMounted && (
+        <AudioPlayer
+          className="sticky bottom-0"
+          src={trackList[beatId].url}
+          showSkipControls
+          autoPlayAfterSrcChange
+          ref={player}
+        />
+      )}</>
   );
 }
 

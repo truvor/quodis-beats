@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function BeatCard({ play }: { play: (url: string) => void }) {
+export default function BeatCard({
+  play,
+  id,
+}: {
+  play: (id: number) => void;
+  id: number;
+}) {
   return (
     <div className="w-screen flex items-center justify-between max-w-2xl p-4 bg-white">
       <Image
@@ -9,11 +15,7 @@ export default function BeatCard({ play }: { play: (url: string) => void }) {
         alt="Beat Image"
         width={50}
         height={50}
-        onClick={() =>
-          play(
-            "https://9ty5evfxd16kbu1f.public.blob.vercel-storage.com/GANG-DNjLaVlzP0QVzWmDeikbOd8LaAfNmB.mp3",
-          )
-        }
+        onClick={() => play(id)}
       />
       <span className="text-gray-600 text-sm">Beat Name</span>
       <Link
