@@ -12,6 +12,15 @@ export type AuthFormData = {
 };
 
 export default function LoginPage() {
+  if (process.env.NODE_ENV === "production") {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
+        <h1 className="text-4xl font-bold text-[#b5a37b]">Login</h1>
+        <p className="text-xl text-gray-400">Coming Soon</p>
+      </div>
+    );
+  }
+
   const {
     register,
     handleSubmit,
