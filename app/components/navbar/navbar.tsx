@@ -106,13 +106,7 @@ export default function Navbar() {
                 <span>Store</span>
               </Link>
             </li>
-            <Activity
-              mode={
-                process.env.NODE_ENV === "development" ? "visible" : "hidden"
-              }
-            >
-              <Login handleClick={handleLinkClick} />
-            </Activity>
+            <Login handleClick={handleLinkClick} />
           </ul>
         </nav>
       </div>
