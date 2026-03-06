@@ -1,8 +1,11 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import PlayerWrapper from "@/app/components/player-wrapper/player-wrapper";
+import { adminFlag } from "@/lib/flags";
 
 export default async function AdminPage() {
+  const isAdminFlagEnabled = await adminFlag();
+
   if (process.env.NODE_ENV === "production") {
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
@@ -19,5 +22,9 @@ export default async function AdminPage() {
     redirect("/login");
   }
 
-  return <PlayerWrapper />;
+  return (
+    <>
+      {isAdminFlagEnabled && <PlayerWrapper />}
+    </>
+  );
 }
