@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Activity, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Login from "@/app/components/navbar/login";
 
