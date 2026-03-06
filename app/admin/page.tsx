@@ -6,15 +6,6 @@ import { adminFlag } from "@/lib/flags";
 export default async function AdminPage() {
   const isAdminFlagEnabled = await adminFlag();
 
-  if (process.env.NODE_ENV === "production") {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
-        <h1 className="text-4xl font-bold text-[#b5a37b]">Store</h1>
-        <p className="text-xl text-gray-400">Coming Soon</p>
-      </div>
-    );
-  }
-
   const supabase = await createClient();
 
   const { data, error } = await supabase.auth.getUser();
@@ -24,6 +15,10 @@ export default async function AdminPage() {
 
   return (
     <>
+      <div className={`flex flex-col items-center justify-center ${isAdminFlagEnabled ? "py-12" : "min-h-[50vh]"} space-y-4`}>
+        <h1 className="text-4xl font-bold text-[#b5a37b]">Store</h1>
+        <p className="text-xl text-gray-400">Coming Soon</p>
+      </div>
       {isAdminFlagEnabled && <PlayerWrapper />}
     </>
   );

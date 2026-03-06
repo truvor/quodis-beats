@@ -12,15 +12,6 @@ export type AuthFormData = {
 };
 
 export default function LoginForm({ isAdminFlagEnabled }: { isAdminFlagEnabled: boolean }) {
-    if (process.env.NODE_ENV === "production") {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
-                <h1 className="text-4xl font-bold text-[#b5a37b]">Login</h1>
-                <p className="text-xl text-gray-400">Coming Soon</p>
-            </div>
-        );
-    }
-
     const {
         register,
         handleSubmit,
@@ -64,6 +55,10 @@ export default function LoginForm({ isAdminFlagEnabled }: { isAdminFlagEnabled: 
     });
 
     return (<>
+        <div className={`flex flex-col items-center justify-center ${isAdminFlagEnabled ? "py-12" : "min-h-[50vh]"} space-y-4`}>
+            <h1 className="text-4xl font-bold text-[#b5a37b]">Login</h1>
+            <p className="text-xl text-gray-400">Coming Soon</p>
+        </div>
         {isAdminFlagEnabled && <form
             className={`flex flex-col items-left
 bg-white rounded-lg shadow-sm border border-gray-200 py-6 px-20 space-y-6
