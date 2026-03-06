@@ -12,6 +12,7 @@ export type AuthFormData = {
 };
 
 export default function LoginPage() {
+
   const {
     register,
     handleSubmit,

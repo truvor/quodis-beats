@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Activity, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Login from "@/app/components/navbar/login";
 
@@ -101,13 +101,12 @@ export default function Navbar() {
                 <span>Internet Speaks</span>
               </Link>
             </li>
-            <Activity
-              mode={
-                process.env.NODE_ENV === "development" ? "visible" : "hidden"
-              }
-            >
-              <Login handleClick={handleLinkClick} />
-            </Activity>
+            <li>
+              <Link onClick={handleLinkClick} href="/admin">
+                <span>Store</span>
+              </Link>
+            </li>
+            <Login handleClick={handleLinkClick} />
           </ul>
         </nav>
       </div>
