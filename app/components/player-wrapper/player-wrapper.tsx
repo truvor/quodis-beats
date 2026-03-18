@@ -20,14 +20,16 @@ function PlayerWrapper() {
   const [beatId, setBeatId] = useState(0);
   const player = useRef<AudioPlayer>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const togglePlay = (id: number) => {
+  const togglePlay = (id: number, e: React.MouseEvent) => {
     setBeatId(id);
-    player?.current?.playAudioPromise();
+    setIsPlaying(!isPlaying);
+    player?.current?.togglePlay(e);
   };
 
   return (
@@ -36,12 +38,12 @@ function PlayerWrapper() {
         {Array(10)
           .fill(null)
           .map((_item, index) => (
-            <BeatCard key={index} id={index} play={togglePlay} />
+            <BeatCard key={index} id={index} play={togglePlay} isPlaying={isPlaying} />
           ))}
       </div>
       {isMounted && (
         <AudioPlayer
-          className="sticky bottom-0"
+          className="sticky bottom-0 z-20"
           src={trackList[beatId].url}
           showSkipControls
           autoPlayAfterSrcChange
