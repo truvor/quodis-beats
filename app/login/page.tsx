@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { authSchema, type AuthSchemaType } from "./authSchema";
@@ -12,6 +13,7 @@ export type AuthFormData = {
 };
 
 export default function LoginPage() {
+  const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null);
 
   const {
     register,
@@ -32,6 +34,7 @@ export default function LoginPage() {
     const supabase = createClient();
 
     try {
+      setMessage(null);
       let error = null;
       const result = authSchema.safeParse(data);
       if (!result.success) {
@@ -42,15 +45,28 @@ export default function LoginPage() {
       }
 
       if (action === "signup") {
-        error = (await supabase.auth.signUp(data))?.error;
-      } else {
-        error = (await supabase.auth.signInWithPassword(data))?.error;
-      }
+        const { data: signUpData, error: signUpError } = await supabase.auth.signUp(data);
+        if (signUpError) throw new Error(signUpError.message);
 
-      if (error) throw new Error(error.message);
-      router.push("/admin");
-    } catch (error) {
-      console.log(error);
+        // When autoconfirm is off, Supabase returns a fake user with an empty identities array
+        // if the user already exists, to prevent email enumeration. We handle this explicitly.
+        if (signUpData.user?.identities?.length === 0) {
+          throw new Error("User already exists");
+        }
+
+        setMessage({ text: "Confirm Email", type: "success" });
+        reset();
+        return;
+      } else {
+        const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword(data);
+        if (signInError || !signInData.session) {
+          setMessage({ text: signInError?.message || "Not signed in", type: "error" });
+          return;
+        }
+        router.push("/admin");
+      }
+    } catch (error: any) {
+      setMessage({ text: error.message || "An error occurred", type: "error" });
     }
     reset();
   });
@@ -62,6 +78,16 @@ bg-white rounded-lg shadow-sm border border-gray-200 py-6 px-20 space-y-6
 max-w-sm mx-auto`}
       onSubmit={onSubmit}
     >
+      {message && (
+        <div
+          className={`text-sm font-medium rounded-md p-3 w-full text-center ${message.type === "success"
+            ? "text-green-600 bg-green-50"
+            : "text-red-600 bg-red-50"
+            }`}
+        >
+          {message.text}
+        </div>
+      )}
       <div className="flex flex-col items-start">
         <label className="text-gray-500" htmlFor="email">
           Email
