@@ -27,9 +27,14 @@ function PlayerWrapper() {
   }, []);
 
   const togglePlay = (id: number, e: React.MouseEvent) => {
-    setBeatId(id);
-    setIsPlaying(!isPlaying);
-    player?.current?.togglePlay(e);
+    if (beatId === id) {
+      setIsPlaying(!isPlaying);
+      player?.current?.togglePlay(e);
+    } else {
+      setBeatId(id);
+      setIsPlaying(true);
+      player?.current?.playAudioPromise();
+    }
   };
 
   return (
@@ -38,7 +43,7 @@ function PlayerWrapper() {
         {Array(10)
           .fill(null)
           .map((_item, index) => (
-            <BeatCard key={index} id={index} play={togglePlay} isPlaying={isPlaying} />
+            <BeatCard key={index} id={index} play={togglePlay} isPlaying={beatId === index && isPlaying} />
           ))}
       </div>
       {isMounted && (

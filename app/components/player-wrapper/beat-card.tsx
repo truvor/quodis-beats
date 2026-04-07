@@ -26,7 +26,7 @@ export default function BeatCard({
           height={50}
         />
         <Image
-          src={isPlaying ? "/pause-circle.svg" : "/play-circle.svg"}
+          src={isPlaying ? "/pause.svg" : "/play.svg"}
           className="absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           alt="Play Icon"
           width={30}
