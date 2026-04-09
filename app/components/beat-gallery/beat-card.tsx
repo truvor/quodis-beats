@@ -1,20 +1,28 @@
+import { usePlayerContext } from "@/app/context/player-context";
 import Image from "next/image";
 import Link from "next/link";
+import BEATS from "@/app/data/beats.json";
 
 export default function BeatCard({
   beat,
   play,
   isPlaying,
 }: {
-  beat: { id: number; name: string; cover?: string; price?: number; bpm?: string };
-  play: (id: number, e: React.MouseEvent) => void;
+  beat: typeof BEATS[0];
+  play: (id: string, e: React.MouseEvent) => void;
   isPlaying: boolean;
 }) {
+
+  const { id, setId } = usePlayerContext();
+
   return (
     <div className="relative w-screen flex items-center justify-between max-w-[95vws] xl:max-w-2xl p-4 bg-white hover:bg-gray-100 group">
       <button
         className="absolute inset-0 z-10 cursor-pointer rounded"
-        onClick={(e) => play(beat.id, e)}
+        onClick={(e) => {
+          setId(beat.id);
+          play(beat.id, e);
+        }}
         aria-label="Play beat"
       />
 
