@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/app/components/navbar/navbar";
 import Media from "@/app/components/media/media";
 import { PlayerProvider } from "@/app/context/player-context";
+import PlayerWrapper from "@/app/components/beat-gallery/player-wrapper";
 import { umamiAttr } from "@/lib/umami";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,7 +43,10 @@ export default function RootLayout({
         <Navbar />
         <Media />
         <PlayerProvider>
-          <main>{children}</main>
+          <main>
+            {children}
+            <PlayerWrapper />
+          </main>
         </PlayerProvider>
 
         <footer className="mt-6 bg-white shadow-sm dark:bg-gray-800 flex-shrink-0">

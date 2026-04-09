@@ -5,24 +5,28 @@ import BEATS from "@/app/data/beats.json";
 
 export default function BeatCard({
   beat,
-  play,
-  isPlaying,
 }: {
   beat: typeof BEATS[0];
-  play: (id: string, e: React.MouseEvent) => void;
-  isPlaying: boolean;
 }) {
 
-  const { id, setId } = usePlayerContext();
+  const { id, setId, isPlaying: globalIsPlaying, setIsPlaying, playerRef } = usePlayerContext();
+  const isPlaying = id === beat.id && globalIsPlaying;
+
+  const togglePlay = (e: React.MouseEvent) => {
+    if (id === beat.id) {
+      setIsPlaying(!globalIsPlaying);
+      playerRef?.current?.togglePlay(e);
+    } else {
+      setId(beat.id);
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <div className="relative w-screen flex items-center justify-between max-w-[95vws] xl:max-w-2xl p-4 bg-white hover:bg-gray-100 group">
       <button
         className="absolute inset-0 z-10 cursor-pointer rounded"
-        onClick={(e) => {
-          setId(beat.id);
-          play(beat.id, e);
-        }}
+        onClick={togglePlay}
         aria-label="Play beat"
       />
 
