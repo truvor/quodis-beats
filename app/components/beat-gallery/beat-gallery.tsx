@@ -5,9 +5,11 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import BeatCard from "./beat-card";
 import BEATS from "@/app/data/beats.json";
+import { usePlayerContext } from "@/app/context/player-context";
 
 function BeatGallery() {
-  const [beatId, setBeatId] = useState(0);
+  const { id: beatId, setId } = usePlayerContext();
+
   const player = useRef<AudioPlayer>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -16,14 +18,13 @@ function BeatGallery() {
     setIsMounted(true);
   }, []);
 
-  const togglePlay = (id: number, e: React.MouseEvent) => {
+  const togglePlay = (id: string | null, e: React.MouseEvent) => {
     if (beatId === id) {
       setIsPlaying(!isPlaying);
       player?.current?.togglePlay(e);
     } else {
-      setBeatId(id);
-      setIsPlaying(true);
-      player?.current?.playAudioPromise();
+      setId(id);
+      setIsPlaying(_ => true);
     }
   };
 
@@ -34,11 +35,12 @@ function BeatGallery() {
           <BeatCard key={beat.id} beat={beat} play={togglePlay} isPlaying={beatId === beat.id && isPlaying} />
         ))}
       </div>
-      {isMounted && (
+      {beatId && isMounted && (
         <AudioPlayer
           className="sticky bottom-0 z-20"
-          src={BEATS[beatId]?.url}
+          src={BEATS[Number(beatId)]?.url}
           showSkipControls
+          autoPlay
           autoPlayAfterSrcChange
           ref={player}
         />

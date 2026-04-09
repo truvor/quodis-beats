@@ -5,6 +5,7 @@ import React from "react";
 import "./globals.css";
 import Navbar from "@/app/components/navbar/navbar";
 import Media from "@/app/components/media/media";
+import { PlayerProvider } from "@/app/context/player-context";
 import { umamiAttr } from "@/lib/umami";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +41,9 @@ export default function RootLayout({
       >
         <Navbar />
         <Media />
-        <main>{children}</main>
+        <PlayerProvider>
+          <main>{children}</main>
+        </PlayerProvider>
 
         <footer className="mt-6 bg-white shadow-sm dark:bg-gray-800 flex-shrink-0">
           <div className="w-full mx-auto max-w-screen-xl p-4 flex justify-center">

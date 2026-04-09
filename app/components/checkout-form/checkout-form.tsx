@@ -11,7 +11,7 @@ import {
 
 interface CheckoutFormProps {
   uiMode: Stripe.Checkout.SessionCreateParams.UiMode;
-  beatId: number
+  beatId: string
 }
 
 export default function CheckoutForm({ uiMode, beatId }: Readonly<CheckoutFormProps>) {
