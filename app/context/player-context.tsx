@@ -1,10 +1,14 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useRef, ReactNode, RefObject } from "react";
+import type AudioPlayer from "react-h5-audio-player";
 
 interface PlayerContextType {
   id: string | null;
   setId: (id: string | null | ((prev: string | null) => string | null)) => void;
+  isPlaying: boolean;
+  setIsPlaying: (isPlaying: boolean | ((prev: boolean) => boolean)) => void;
+  playerRef: RefObject<AudioPlayer | null>;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -19,9 +23,11 @@ export function usePlayerContext() {
 
 export function PlayerProvider({ children }: { children: ReactNode }) {
   const [id, setId] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const playerRef = useRef<AudioPlayer>(null);
 
   return (
-    <PlayerContext.Provider value={{ id, setId }}>
+    <PlayerContext.Provider value={{ id, setId, isPlaying, setIsPlaying, playerRef }}>
       {children}
     </PlayerContext.Provider>
   );
