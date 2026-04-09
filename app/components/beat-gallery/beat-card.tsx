@@ -2,19 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function BeatCard({
+  beat,
   play,
-  id,
   isPlaying,
 }: {
+  beat: { id: number; name: string; cover?: string; price?: number; bpm?: string };
   play: (id: number, e: React.MouseEvent) => void;
-  id: number;
   isPlaying: boolean;
 }) {
   return (
     <div className="relative w-screen flex items-center justify-between max-w-[95vws] xl:max-w-2xl p-4 bg-white hover:bg-gray-100 group">
       <button
         className="absolute inset-0 z-10 cursor-pointer rounded"
-        onClick={(e) => play(id, e)}
+        onClick={(e) => play(beat.id, e)}
         aria-label="Play beat"
       />
 
@@ -24,6 +24,7 @@ export default function BeatCard({
           alt="Beat Image"
           width={50}
           height={50}
+          className="rounded-lg object-cover w-[50px] h-[50px]"
         />
         <Image
           src={isPlaying ? "/pause.svg" : "/play.svg"}
@@ -34,16 +35,16 @@ export default function BeatCard({
         />
       </div>
 
-      <p className="flex flex-col text-gray-600 w-full pl-2">
-        <span>Beat Name</span>
-        <span className="text-xs  pl-1">160bpm</span>
+      <p className="flex flex-col text-gray-600 w-full pl-2 pr-4 text-left">
+        <span className="font-medium truncate">{beat.name}</span>
+        <span className="text-xs pl-1">{beat.bpm}bpm</span>
       </p>
 
       <Link
         className="z-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        href="/admin/purchase"
+        href={`/admin/purchase/${beat.id}`}
       >
-        $50
+        ${beat.price}
       </Link>
     </div>
   );

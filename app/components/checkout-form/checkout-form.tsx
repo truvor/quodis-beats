@@ -11,11 +11,10 @@ import {
 
 interface CheckoutFormProps {
   uiMode: Stripe.Checkout.SessionCreateParams.UiMode;
+  beatId: number
 }
 
-const BEAT_ID = "beat_1";
-
-export default function CheckoutForm(props: Readonly<CheckoutFormProps>) {
+export default function CheckoutForm({ uiMode, beatId }: Readonly<CheckoutFormProps>) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   const formAction = async (data: FormData): Promise<void> => {
@@ -24,15 +23,16 @@ export default function CheckoutForm(props: Readonly<CheckoutFormProps>) {
     ) as Stripe.Checkout.SessionCreateParams.UiMode;
 
     // Pass uiMode to define url parameters conditionally
-    const { client_secret } = await createCheckoutSession(BEAT_ID);
+    const { client_secret } = await createCheckoutSession(beatId.toString());
 
     if (uiMode === "embedded") return setClientSecret(client_secret);
   };
 
   return (
     <>
+      <p>Beat ID: {beatId}</p>
       <form action={formAction}>
-        <input type="hidden" name="uiMode" value={props.uiMode} />
+        <input type="hidden" name="uiMode" value={uiMode} />
         <button
           className="bg-blue-300 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           type="submit"
