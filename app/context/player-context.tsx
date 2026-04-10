@@ -9,6 +9,7 @@ interface PlayerContextType {
   isPlaying: boolean;
   setIsPlaying: (isPlaying: boolean | ((prev: boolean) => boolean)) => void;
   playerRef: RefObject<AudioPlayer | null>;
+  togglePlay: (beatId: string, e: React.MouseEvent) => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -26,8 +27,18 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const playerRef = useRef<AudioPlayer>(null);
 
+  const togglePlay = (beatId: string, e: React.MouseEvent) => {
+    if (id === beatId) {
+      setIsPlaying((prev) => !prev);
+      playerRef?.current?.togglePlay(e);
+    } else {
+      setId(beatId);
+      setIsPlaying(true);
+    }
+  };
+
   return (
-    <PlayerContext.Provider value={{ id, setId, isPlaying, setIsPlaying, playerRef }}>
+    <PlayerContext.Provider value={{ id, setId, isPlaying, setIsPlaying, playerRef, togglePlay }}>
       {children}
     </PlayerContext.Provider>
   );

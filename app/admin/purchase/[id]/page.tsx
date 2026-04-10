@@ -1,6 +1,6 @@
 import CheckoutForm from "@/app/components/checkout-form/checkout-form";
 import BEATS from "@/app/data/beats.json";
-import Image from "next/image";
+import PlayableCover from "./playable-cover";
 
 export default async function PurchasePage({ params }: { params: Promise<{ id: string }> }) {
   const id = (await params).id;
@@ -10,15 +10,7 @@ export default async function PurchasePage({ params }: { params: Promise<{ id: s
     <div className="flex flex-col items-center justify-center max-w-2xl mx-auto px-4 md:px-0 py-8">
       <div className="w-full bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row gap-8">
         {beat?.cover && (
-          <div className="shrink-0 flex justify-center md:items-start">
-            <Image
-              src={beat.cover}
-              alt={beat.name || "Beat cover"}
-              width={200}
-              height={200}
-              className="rounded-lg shadow-sm object-cover"
-            />
-          </div>
+          <PlayableCover beat={beat} />
         )}
 
         <div className="flex flex-col w-full">

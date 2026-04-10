@@ -20,7 +20,7 @@ export default async function More() {
     <div
       className="flex flex-col items-center justify-center max-w-2xl mx-auto px-4 md:px-0">
       <div
-        className="w-full bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-6">
+        className="w-full bg-white rounded-lg shadow-sm border border-gray-200 my-4 p-6 space-y-6">
         {searchResult.length > 0 ? (
           <>
             {searchResult.map((result, index) => (

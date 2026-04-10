@@ -1,44 +1,34 @@
 import { usePlayerContext } from "@/app/context/player-context";
 import Image from "next/image";
 import Link from "next/link";
-import BEATS from "@/app/data/beats.json";
+import type { Beat } from "@/app/types/beat";
 
 export default function BeatCard({
   beat,
 }: {
-  beat: typeof BEATS[0];
+  beat: Beat;
 }) {
 
-  const { id, setId, isPlaying: globalIsPlaying, setIsPlaying, playerRef } = usePlayerContext();
+  const { id, isPlaying: globalIsPlaying, togglePlay } = usePlayerContext();
   const isPlaying = id === beat.id && globalIsPlaying;
 
-  const togglePlay = (e: React.MouseEvent) => {
-    if (id === beat.id) {
-      setIsPlaying(!globalIsPlaying);
-      playerRef?.current?.togglePlay(e);
-    } else {
-      setId(beat.id);
-      setIsPlaying(true);
-    }
-  };
-
   return (
-    <div className="relative w-screen flex items-center justify-between max-w-[95vws] xl:max-w-2xl p-4 bg-white hover:bg-gray-100 group">
+    <div className="relative w-screen flex items-center justify-between max-w-[95vw] xl:max-w-2xl p-4 bg-white hover:bg-gray-100 group">
       <button
         className="absolute inset-0 z-10 cursor-pointer rounded"
-        onClick={togglePlay}
+        onClick={(e) => togglePlay(beat.id, e)}
         aria-label="Play beat"
       />
 
       <div className="relative z-0 flex items-center justify-center pointer-events-none">
         <Image
-          src="/final_chapter_600x600.jpg"
+          src={beat.cover}
           alt="Beat Image"
           width={50}
           height={50}
-          className="rounded-lg object-cover w-[50px] h-[50px]"
+          className="rounded-lg object-cover"
         />
-        <Image
+        <img
           src={isPlaying ? "/pause.svg" : "/play.svg"}
           className="absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           alt="Play Icon"
@@ -47,10 +37,10 @@ export default function BeatCard({
         />
       </div>
 
-      <p className="flex flex-col text-gray-600 w-full pl-2 pr-4 text-left">
+      <div className="flex flex-col text-gray-600 w-full pl-2 pr-4 text-left">
         <span className="font-medium truncate">{beat.name}</span>
         <span className="text-xs pl-1">{beat.bpm}bpm</span>
-      </p>
+      </div>
 
       <Link
         className="z-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
