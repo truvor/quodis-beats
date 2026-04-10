@@ -2,7 +2,6 @@
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import BEATS from "@/app/data/beats.json";
 import { usePlayerContext } from "@/app/context/player-context";
 import { RefObject, useState, useEffect } from "react";
 
@@ -17,15 +16,19 @@ export default function PlayerWrapper() {
   if (!beatId || !isMounted) return null;
 
   return (
-    <AudioPlayer
-      className="sticky bottom-0 border-t border-gray-200 z-20"
-      src={BEATS[Number(beatId)]?.url}
-      showSkipControls
-      autoPlay
-      autoPlayAfterSrcChange
-      ref={playerRef as RefObject<AudioPlayer | null>}
-      onPlay={() => setIsPlaying(true)}
-      onPause={() => setIsPlaying(false)}
-    />
+    <>
+      {beatId && (
+        <AudioPlayer
+          className="sticky bottom-0 border-t border-gray-200 z-20"
+          src={`/api/audio/${beatId}`}
+          showSkipControls
+          autoPlay
+          autoPlayAfterSrcChange
+          ref={playerRef as RefObject<AudioPlayer | null>}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
+      )}
+    </>
   );
 }
