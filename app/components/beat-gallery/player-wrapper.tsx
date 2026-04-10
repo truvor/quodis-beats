@@ -18,7 +18,7 @@ export default function PlayerWrapper() {
 
   return (
     <AudioPlayer
-      className="sticky bottom-0 z-20"
+      className="sticky bottom-0 border-t border-gray-200 z-20"
       src={BEATS[Number(beatId)]?.url}
       showSkipControls
       autoPlay

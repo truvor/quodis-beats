@@ -38,18 +38,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <Navbar />
         <Media />
         <PlayerProvider>
-          <main>
-            {children}
+          <main className="flex-grow flex flex-col">
+            <div className="flex-grow">
+              {children}
+            </div>
             <PlayerWrapper />
           </main>
         </PlayerProvider>
 
-        <footer className="mt-6 bg-white shadow-sm dark:bg-gray-800 flex-shrink-0">
+        <footer className="bg-white shadow-sm dark:bg-gray-800 flex-shrink-0 border-t border-gray-200">
           <div className="w-full mx-auto max-w-screen-xl p-4 flex justify-center">
             <span className="text-base text-gray-500 sm:text-center dark:text-gray-400">
               Developed by{" "}
