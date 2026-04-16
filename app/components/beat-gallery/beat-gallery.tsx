@@ -1,12 +1,13 @@
-"use client";
-
+import { Beat } from "@/app/types/beat";
 import BeatCard from "./beat-card";
-import BEATS from "@/app/data/beats.json";
+import { getBeats } from "@/app/actions/beats";
 
-function BeatGallery() {
+async function BeatGallery() {
+  const beats = await getBeats();
+
   return (
     <div className="flex flex-col items-center mb-4">
-      {BEATS.map((beat) => (
+      {beats.map((beat: Beat) => (
         <BeatCard key={beat.id} beat={beat} />
       ))}
     </div>
