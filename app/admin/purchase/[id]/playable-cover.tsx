@@ -15,7 +15,7 @@ export default function PlayableCover({ beat }: { beat: Beat }) {
       aria-label="Toggle play/pause beat"
     >
       <Image
-        src={beat.cover}
+        src={beat.picture_url}
         alt={beat.name || "Beat cover"}
         width={200}
         height={200}

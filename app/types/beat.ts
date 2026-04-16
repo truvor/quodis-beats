@@ -1,9 +1,9 @@
 export type Beat = {
   id: string;
-  cover: string;
+  picture_url: string;
   name: string;
   description: string;
   price: number;
-  url: string;
+  mp3_url: string;
   bpm: string;
 }

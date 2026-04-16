@@ -1,3 +1,5 @@
+"use client";
+
 import { usePlayerContext } from "@/app/context/player-context";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +24,7 @@ export default function BeatCard({
 
       <div className="relative z-0 flex items-center justify-center pointer-events-none">
         <Image
-          src={beat.cover}
+          src={beat.picture_url}
           alt="Beat Image"
           width={50}
           height={50}
@@ -39,7 +41,7 @@ export default function BeatCard({
 
       <div className="flex flex-col text-gray-600 w-full pl-2 pr-4 text-left">
         <span className="font-medium truncate">{beat.name}</span>
-        <span className="text-xs pl-1">{beat.bpm}bpm</span>
+        <span className="text-xs pl-1">{beat.bpm} bpm</span>
       </div>
 
       <Link
